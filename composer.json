@@ -1,0 +1,11 @@
+{
+    "name": "travelnote/stephanie",
+    "description": "Last project on OpenClassroom : Travel Note",
+    "authors": [
+        {
+            "name": "Stph phm",
+            "email": "stephanie.pham.lnd@gmail.com"
+        }
+    ],
+    "require": {}
+}
