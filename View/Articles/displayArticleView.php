@@ -22,6 +22,15 @@
                </div>
           </div>
      </div>
+    <div class="form-comment">
+        <form action="index.php?action=addComment&amp;id= <?= $article['id']?>" method="POST">
+            <div class="form-group">
+                <label for="comment">Commentaire</label>
+                <textarea id="mytextarea" class="form-control" rows="3" name="comment"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary mb-4" value="Commentez">
+        </form>
+    </div>
      <div class="part-comments">
           <h3>Réponse (Nbre de commentaire)</h3>
 
@@ -36,5 +45,6 @@
                <?php endforeach; ?>
 
           </div>
+
      </div>
 </article> <?php $content = ob_get_clean(); ?> <?php include 'View/template.php'; ?>

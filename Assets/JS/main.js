@@ -12,5 +12,5 @@ ReqXHR.onreadystatechange = function() {
      }
 }
 
-ReqXHR.open("GET", "api.php");
+ReqXHR.open("GET", "View/Articles/displayArticleView.php");
 ReqXHR.send();

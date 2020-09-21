@@ -13,6 +13,38 @@ class UsersManager extends Manager
         return $listUsers = $resUser->fetchAll();
     }
 
+    public function getUserByUsername($username)
+    {
+        $db = $this->dbConnect();
+        $reqUsername = $db->prepare('
+            SELECT * 
+            FROM  users
+            WHERE username = :username
+        ');
+
+        $reqUsername->execute([
+            'username' => $username
+        ]);
+
+        return $userByUsername = $reqUsername->fetch();
+    }
+
+    public function getUserByEmail($email)
+    {
+        $db = $this->dbConnect();
+        $reqUsername = $db->prepare('
+            SELECT * 
+            FROM  users
+            WHERE email_user = :email_user
+        ');
+
+        $reqUsername->execute([
+            'email_user' => $email
+        ]);
+
+        return $userByUsername = $reqUsername->fetch();
+    }
+
     public function addUSer($username, $email, $first_name, $last_name, $password_user)
     {
         $db = $this->dbConnect();
