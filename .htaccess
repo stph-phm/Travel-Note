@@ -1,0 +1,5 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^([a-zA-Z0-9_\-]*)?/?$ index.php?action=$1&%{QUERY_STRING}

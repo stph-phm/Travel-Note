@@ -2,11 +2,56 @@
 namespace App\Controller;
 
 
+use App\Model\UsersManager;
+
 class Controller
 {
     public $userInfo;
     public $isLogin;
     public $isAdmin;
+
+    function __construct() {
+        $this->isLogin = $this->isLogin();
+        $this->isAdmin = $this->isAdmin();
+    }
+
+    public function isLogin()
+    {
+        if (isset($_SESSION['userId']) && $this->ifHashSession()) {
+            $userManager = new UsersManager;
+            $this->userInfo = $userManager->getUserById($_SESSION['userId']);
+        } else {
+            $this->userInfo = false;
+        }
+        return $this->userInfo;
+    }
+
+    public function isAdmin()
+    {
+        if($this->isLogin()) {
+            if ($this->userInfo['is_admin'] == 1) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function hashSession($valeur)
+    {
+        return hash("sha256", $valeur);
+    }
+
+    public function ifHashSession()
+    {
+        $hashSession = $this->hashSession($_SESSION['userId']);
+        if ($hashSession == $_SESSION['hashUserId']) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /**
      * @param $string

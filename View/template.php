@@ -7,11 +7,11 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
      <!-- stylesheet -->
+     <link rel="stylesheet" href="Assets/CSS/style.css">
      <link rel="stylesheet" href="Assets/CSS/menu.css">
      <link rel="stylesheet" href="Assets/CSS/footer.css">
-     <link rel="stylesheet" href="Assets/CSS/body.css">
-     <link rel="stylesheet" href="Assets/CSS/slider.css">
-     <link rel="stylesheet" href="Assets/CSS/all.css">
+
+
 
      <!-- fontawasome -->
      <script src="https://kit.fontawesome.com/effe484f35.js" crossorigin="anonymous"></script>
@@ -23,17 +23,14 @@
      <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 
      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <title>Travel Note </title>
+     <title>Travel Note </title>
 
 <body>
-     <div class="wrapper">
-          <header>
+     <?php include 'Includes/nav.php' ?>
 
-               <?php include 'Includes/nav.php' ?>
+     <?= $content ?>
 
-          <?= $content ?>
-
-          <?php include 'Includes/footer.php' ?>
+     <?php include 'Includes/footer.php' ?>
      </div>
      <!-- Jquery -->
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
