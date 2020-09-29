@@ -1,20 +1,44 @@
 <?php
 namespace App\Model;
 
+use App\Model\Manager;
+
 class UsersManager extends Manager
 {
-    public function listUsers()
+    public $user_id;
+    public $username;
+    public $is_admin; 
+    public $email_user;
+    public $password_user;
+
+
+
+    /**
+     * @param $username
+     * @param $email_user
+     * @param $password_user
+     * @return bool
+     */
+    public function addUser($username,$email_user, $password_user)
     {
-        $db =  $this->dbConnect();
-        $resUser = $db->query('
-            SELECT *
-            FROM users 
+        $db = $this->dbConnect();
+        $reqUSer = $db->prepare('
+            INSERT INTO users (username, email_user, password_user, user_at)
+            VALUE (:username, :email_user, :password_user, NOW())
         ');
-        return $listUsers = $resUser->fetchAll();
+
+        return  $reqUSer->execute([
+            'username'          => $username,
+            'email_user'        => $email_user,
+            'password_user'     => $password_user
+        ]);
     }
 
-    public function getUserByUsername($username)
-    {
+    /**
+     * @param $username
+     * @return mixed
+     */
+    public function getUserByUsername($username) {
         $db = $this->dbConnect();
         $reqUsername = $db->prepare('
             SELECT * 
@@ -29,78 +53,40 @@ class UsersManager extends Manager
         return $userByUsername = $reqUsername->fetch();
     }
 
-    public function getUserByEmail($email)
+    /**
+     * @param $email_user
+     * @return mixed
+     */
+    public function getUserByEmail($email_user)
     {
         $db = $this->dbConnect();
-        $reqUsername = $db->prepare('
-            SELECT * 
-            FROM  users
+        $reqMail = $db->prepare('
+            SELECT *
+            FROM users 
             WHERE email_user = :email_user
         ');
-
-        $reqUsername->execute([
-            'email_user' => $email
+        $reqMail->execute([
+            'email_user' => $email_user
         ]);
 
-        return $userByUsername = $reqUsername->fetch();
+        return $userByEmail = $reqMail->fetch();
     }
 
-    public function addUSer($username, $email, $first_name, $last_name, $password_user)
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+    public function getUserById($user_id)
     {
         $db = $this->dbConnect();
         $reqUSer = $db->prepare('
-        INSERT INTO users(username, email, first_name, laste_name, password_user, user_at, is_report) 
-        VALUES (:username, :email, :first_name, :laste_name, :password_user, NOW(), 0)
+            SELECT *
+            FROM users 
+            WHERE id = :id 
         ');
-
-        return  $reqUSer->execute([
-            'username'          => $username,
-            'email_user'        => $email,
-            'first_name'        => $first_name,
-            'last_name'         => $last_name,
-            'password_user'     => $password_user
+        $reqUSer->execute([
+            'id'=> $user_id
         ]);
+        return $userById = $reqUSer->fetch();
     }
-
-    public function reportUser($user_id)
-    {
-        $db = $this->dbConnect();
-        $reqUSer = $db->prepare('
-            UPDATE users
-            SET is_report = 1
-            WHERE id = :id
-        ');
-
-        return  $reqUSer->execute([
-            'id' => $user_id
-        ]);
-    }
-
-    public function validateUser($user_id)
-    {
-        $db = $this->dbConnect();
-        $reqUSer = $db->prepare('
-            UPDATE users
-            SET is_report = 0
-            WHERE id = :id
-        ');
-
-        return  $reqUSer->execute([
-            'id' => $user_id
-        ]);
-    }
-
-    public function deleteUser($user_id)
-    {
-        $db = $this->dbConnect();
-        $reqUSer = $db->prepare('
-            DELETE FROM users
-            WHERE id = :id
-        ');
-
-        return  $reqUSer->execute([
-            'id' => $user_id
-        ]);
-    }
-
 }

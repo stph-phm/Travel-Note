@@ -5,67 +5,66 @@ namespace App\Model;
 
 class CommentsManager extends Manager
 {
-     public function listComments($article_id)
-     {
-          $db = $this->dbConnect();
-          $reqComment = $db->prepare('
-               SELECT comments.*, user.username 
-               FROM comments
-               INNER JOIN users
-               ON comments.user_id = users.id
-               WHERE article_id = :article_id
-               ORDER BY comment_at DESC
-          ');
+    public function listComments($article_id)
+    {
+        $db = $this->dbConnect();
+        $reqComment = $db->prepare('
+            SELECT *
+            FROM comments
+            WHERE article_id = :article_id
+            ORDER BY comment_at DESC
+        ');
 
-          $reqComment->execute([
-               'article_id' => $article_id
-          ]);
+        $reqComment->execute([
+            'article_id' => $article_id
+        ]);
 
-          return $listComments = $reqComment->fetchAll();
-     }
+        return $listComments = $reqComment->fetchAll();
+    }
 
-     public function getCommentById ($comment_id)
-     {
-         $db = $this->dbConnect();
-         $reqComment = $db->prepare('
+    public function getCommentById ($comment_id)
+    {
+        $db = $this->dbConnect();
+        $reqComment = $db->prepare('
             SELECT * 
             FROM comments 
             WHERE id = :id
         ');
-         $reqComment ->execute([
-             'id' => $comment_id
-         ]);
-         return $commentById = $reqComment->fetch();
-     }
+        $reqComment ->execute([
+            'id' => $comment_id
+        ]);
+        return $commentById = $reqComment->fetch();
+    }
 
-     public function addComment($comment, $article_id, $user_id)
-     {
-         $db = $this->dbConnect();
-         $comments = $db->prepare('
-            INSERT INTO comments(comment,is_reported,comment_at , article_id, user_id) 
-            VALUES (:comment, 0, NOW(), :article_id, :user_id)');
+    public function addComment($comment, $article_id, $user_id)
+    {
+        $db = $this->dbConnect();
+        $reqComment = $db->prepare('
+            INSERT INTO comments(comment, comment_at, article_id, user_id) 
+            VALUES (:comment, NOW(), :article_id, ;user_id)
+        ');
 
-         return $comments->execute([
-             'comment' => $comment,
-             'article_id' => $article_id,
-             'user_id' => $user_id
-         ]);
-     }
+        return $reqComment->execute([
+            'comment' => $comment,
+            'article_id' => $article_id,
+            'user_id' => $user_id
+        ]);
+    }
 
-     public function editComment($comment_id, $comment )
-     {
-         $db = $this->dbConnect();
-         $reqComment = $db->prepare('
+    public function editComment($comment_id, $comment )
+    {
+        $db = $this->dbConnect();
+        $reqComment = $db->prepare('
             UPDATE comments
-            SET comment :title
+            SET comment = :comment
             WHERE id = :id
-         ');
+        ');
 
-         $reqComment->execute([
-             "id" => $comment_id,
-             "comment" => $comment
-         ]);
-     }
+        $reqComment->execute([
+            "id" => $comment_id,
+            "comment" => $comment
+        ]);
+    }
 
     public function listReportedCom()
     {

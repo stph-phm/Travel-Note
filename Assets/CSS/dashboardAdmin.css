@@ -1,0 +1,140 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Dosis', sans-serif;
+}
+
+header.header-admin {
+     top: 0;
+     left: 0;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: fixed;
+     background: #1b1b1b;
+     padding: 20px;
+     width: 100%;
+     height: 92px;
+     
+}
+
+header.header-admin .left_area h3 {
+     color: #fff;
+     margin: 0;
+     text-transform: uppercase;
+     font-size: 22px;
+     font-weight: 900;
+}
+
+header.header-admin .right_area a.logout-btn {
+     padding: 15px;
+     background: #006669;
+     text-decoration: none;
+     float: right;
+     margin-top: 12px;
+     margin-right: 40px;
+     border-radius: 5px;
+     font-size: 15px;
+     font-weight: 600;
+     color: #fff;
+     transition: all .5s;
+     transition-property: background;
+}
+
+header.header-admin .right_area a.logout-btn:hover {
+     background: #005558;
+}
+
+.sidebar {
+     background-color: #1b1b1b;
+     margin-top: 70px;
+     padding-top: 30px;
+     position: fixed;
+     left: 0;
+     width: 250px;
+     height: 100%;
+     transition: left .5s;
+}
+
+.sidebar center .profile_img {
+     width: 100px;
+     height: 100px;
+     background: purple;
+     border-radius: 50%;
+     margin-bottom: 10px;
+}
+
+.sidebar center h4 {
+     color: #ccc;
+     margin-top: 0;
+     margin-bottom: 20px;
+
+}
+
+.sidebar a {
+     color: #fff;
+     display: block;
+     width: 100%;
+     line-height: 60px;
+     text-decoration: none;
+     padding-left: 40px;
+     box-sizing: border-box;
+     transition: background .6s;
+}
+
+.sidebar a:hover {
+     background: #006669;
+}
+
+.sidebar i {
+     padding-left: 10px;
+
+}
+
+label #sidebar_btn {
+     z-index: 1;
+     color: #fff;
+     position: fixed;
+     cursor: pointer;
+     left: 300px;
+     font-size: 20px;
+     margin: 5px 0;
+     transition: color .6s;
+}
+
+label i#sidebar_btn:hover {
+     color: #006669;
+}
+
+input#check:checked~.sidebar {
+     left: -190px;
+}
+
+input#check:checked~.sidebar a span {
+     display: none;
+}
+
+input#check:checked~.sidebar a {
+     font-size: 20px;
+     margin-left: 170px;
+     width: 80px;
+}
+
+.content-sidebar {
+     margin-left: 250px;
+     padding-top: 115px;
+     transition: margin-left .6s ;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+
+input#check:checked ~.content-sidebar {
+     margin-left: 60px;
+}
+
+input#check {
+     display: none;
+}

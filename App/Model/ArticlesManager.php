@@ -11,124 +11,97 @@ class ArticlesManager extends Manager
      public $created_at;
      public $published_at;
 
-     public function listsArticles()
-     {
-          $db = $this->dbConnect();
-          $reqArticle = $db->query('
-               SELECT id, title, content, created_at, published_at 
-               FROM articles 
-               ORDER BY created_at ASC     
-          ');
-          
-          return $articles = $reqArticle->fetchAll();
-     }
 
-     public function getArticleById($article_id)
-     {
-          $db = $this->dbConnect();
-          $reqArticle = $db->prepare('
-               SELECT *
-               FROM articles 
-               WHERE id = :id
-          ');
+    public function listArticlesPublished()
+    {
 
-          $reqArticle->execute([
-               'id' => $article_id
-          ]);
-
-          return $article = $reqArticle->fetch();
-     }
-
-     public function getLastArticle()
-     {
-         $db = $this->dbConnect();
-         $reqArticle = $db->query('
+        $db = $this->dbConnect();
+        $reqArticle = $db->query('
             SELECT *
             FROM articles 
-            ORDER BY published_at DESC LIMIT 0, 5');
-         return  $lastArticlr = $reqArticle->fetchAll();
-     }
+            WHERE is_published = 1
+            ORDER BY created_at ASC
+        ');
+        return $articles = $reqArticle->fetchAll();
+    }
 
-     public function listArticleByContinent($continent)
-     {
-         $db = $this->dbConnect();
-         $reqArticle = $db->prepare('
-            SELECT articles.* 
-            FROM articles
-            INNER JOIN  contries ON articles.country_id = countries.id
-            WHERE continent = :continent
-         ');
+    public function listArticles()
+    {
 
-         $reqArticle->execute([
-             'continent' => $continent
-         ]);
+        $db = $this->dbConnect();
+        $reqArticle = $db->query('
+            SELECT *
+            FROM articles 
+            ORDER BY created_at ASC
+        ');
+        return $articles = $reqArticle->fetchAll();
+    }
 
-         return $articleContinent = $reqArticle->fetch();
-     }
-
-    public function listArticleByCountry($country)
+    public function getArticleById($article_id)
     {
         $db = $this->dbConnect();
+        $req = $db->prepare('
+            SELECT *
+            FROM articles 
+            WHERE id = :id 
+        ');
+
+        $req->execute([
+            'id' => $article_id
+        ]);
+
+        return $article = $req->fetch();
+    }
+
+    public function listArticleByContinent() {
+        $db = $this->dbConnect();
         $reqArticle = $db->prepare('
-            SELECT articles.* 
+            SELECT * 
             FROM articles
-            INNER JOIN  contries ON articles.country_id = countries.id
+           GROUP BY continent 
+        ');
+
+        $reqArticle->execute([]);
+
+        return $articleContinent = $reqArticle->fetchAll();
+    }
+
+
+    public function listArticlesByCountry($country) {
+        $db = $this->dbConnect();
+        $reqArticle = $db->prepare('
+            SELECT *
+            FROM articles 
             WHERE country = :country
-         ');
+        ');
 
         $reqArticle->execute([
             'country' => $country
         ]);
 
-        return $articleCountry = $reqArticle->fetch();
+        return  $articleCountry = $reqArticle->fetch();
     }
 
-    public function listArticleByCity($city)
-    {
+    public function editArticle($article_id, $title, $content, $continent, $country, $region, $city) {
         $db = $this->dbConnect();
         $reqArticle = $db->prepare('
-            SELECT articles.* 
-            FROM articles
-            INNER JOIN  contries ON articles.country_id = countries.id
-            WHERE city = :city
-         ');
+            UPDATE articles 
+            SET title = :title, content = :content, continent = :continent, country = :country, region = :regions, city = :city, published_at =  NOW()
+            WHERE id = :id
+        ');
 
         $reqArticle->execute([
-            'city' => $city
+            "id"        =>$article_id, 
+            "title"     =>$title, 
+            "content"   =>$content, 
+            "continent" =>$continent, 
+            "country"   =>$country, 
+            "region"    =>$region,
+            "city"      =>$city
         ]);
-
-        return $articleContinent = $reqArticle->fetch();
     }
 
-     public function addArticle($title, $content,$is_published, $category_id)
-     {
-         $db = $this->dbConnect();
-         $reqArticle = $db->prepare('
-            INSERT INTO articles (title,content, is_published, create_at, category_id ) 
-                VALUES(:title, :content,:is_published, NOW(), :category_id');
-
-         $reqArticle->execute([
-             'title' => $title,
-             'content' => $content,
-             'content' => $is_published,
-             'category_id' => $category_id
-         ]);
-     }
-
-     public function setDraftArticle ($article_id)
-     {
-         $db = $this->dbConnect();
-         $reqArticle = $db->prepare('
-            UPDATE articles 
-            SET is_published = 0
-            WHERE id = :id');
-
-         $reqArticle->execute([
-             'id' => $article_id
-         ]);
-     }
-
-    public function setArticleOnline ($article_id)
+    public function publishedArticle($article_id) 
     {
         $db = $this->dbConnect();
         $reqArticle = $db->prepare('
@@ -141,19 +114,16 @@ class ArticlesManager extends Manager
         ]);
     }
 
-    public function editArticle($article_id, $title, $content, $category_id)
+    public function draftArticle($article_id)
     {
         $db = $this->dbConnect();
-        $reqArticle = $db->prepare(
-            'UPDATE articles 
-            SET title = :title, content = :content, category_id = :category_id
-            WHERE id = :id ');
+        $reqArticle = $db->prepare('
+            UPDATE articles 
+            SET is_published = 0
+            WHERE id = :id');
 
         $reqArticle->execute([
-            "id" => $article_id,
-            "title" => $title,
-            "content" => $content,
-            'category_id' => $category_id
+            'id' => $article_id
         ]);
     }
 
@@ -167,10 +137,5 @@ class ArticlesManager extends Manager
             'id' => $article_id
         ]);
     }
-
-
-
-
-
 
 }

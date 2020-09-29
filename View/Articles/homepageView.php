@@ -4,9 +4,7 @@
         <div class="slider-items">
             <div class="item">
                 <img src="Assets/Images/hero.jpg" alt="slide">
-                <div class="caption">
-                    slide 1
-                </div>
+                <div class="caption"> slide 1</div>
             </div>
 
             <div class="item">
@@ -30,7 +28,7 @@
         <div class="next-slide">&#8250;</div>
         <!-- slide controls -->
     </div>
-</header>
+
 
 <section>
     <div class="section-article">
@@ -42,7 +40,6 @@
                 <span><i class="fas fa-calendar-alt"> &nbsp; </i> <?= date_format(date_create($listArticle['published_at']), 'd/m/Y') ?> | &nbsp;</span>
                 <span>category</span>
             </p>
-            
         </div>
         <div class="article-body">
             <p><?=  nl2br(mb_substr($listArticle['content'], 0, 300)) ?> </p>
@@ -53,16 +50,12 @@
     <div class="section-category">
         <div class="about-me">
             <h2>A propos de moi</h2>
-            <div class="about-me-img">
-
-            </div>
+            <div class="about-me-img"></div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ipsum ipsa reiciendis voluptates
                 dolorum debitis rem odio accusantium, error sit vero, facere, sequi dolore veritatis reprehenderit
                 architecto saepe quam. Voluptatum.</p>
         </div>
-        <div class="category">
-
-        </div>
+        <div class="category"></div>
     </div>
 </section>
 <?php $content = ob_get_clean(); ?>

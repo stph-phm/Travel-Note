@@ -1,16 +1,9 @@
 
-     // Menu-toggle button
-     $(document).ready(function () {
-          $(".menu-icon").on("click", function () {
-               $("nav .menu ul").toggleClass("showing");
-          });
-     });
-
      // Scrolling Effect
      $(window).on("scroll", function () {
           if ($(window).scrollTop()) {
-               $('nav').addClass('black');
+               $('.nav-visitor').addClass('black');
           } else {
-               $('nav').removeClass('black');
+               $('.nav-visitor').removeClass('black');
           }
      });

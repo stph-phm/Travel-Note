@@ -19,14 +19,11 @@
                <div class="footer-section links">
                     <h2>Quick Links</h2>
                     <ul>
-                         <a href="#">
+                         <a href="index.php">
                               <li>Home</li>
                          </a>
                          <a href="#">
                               <li>Continent Visité</li>
-                         </a>
-                         <a href="#">
-                              <li>A propose de moi</li>
                          </a>
                          <a href="#">
                               <li>Contact</li>

@@ -1,0 +1,147 @@
+.content-sidebar h1.article-management {
+     font-size: 35px;
+     text-transform: uppercase;
+     padding: 10px;
+}
+
+.content-sidebar .table table  {
+     border-collapse: collapse;
+     padding: 15px;
+}
+
+.content-sidebar .table table, 
+.content-sidebar .table table th, 
+.content-sidebar .table table th tr {
+     border: 1px solid black;
+}
+
+
+.content-sidebar .table table thead tr {
+     background: #404046;
+     margin: 0;
+     text-transform: uppercase;
+     color: white;
+     height: 10vh;
+}
+
+
+.content-sidebar .table table tbody tr.t-content {
+     height: 14vh;
+}
+
+.content-sidebar .table table tbody tr td.t-action {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     align-content: center;
+     height: 14vh;
+     border: 1px;
+     padding-top: 10px;
+}
+
+
+.content-sidebar .table table tbody tr td.t-action a {
+     padding: 10px;
+     background: #006669;
+     color: #fff;
+     text-decoration: none;
+     border-radius: 10px;
+     font-weight: 600;
+}
+
+.content-sidebar .table table tbody tr td.t-action a.eyes:hover {
+     background: #0069d9;
+
+}
+
+.content-sidebar .table table tbody tr td.t-action a.pencil:hover {
+     background: #6c757d;
+}
+
+.content-sidebar .table table tbody tr td.t-action a.times:hover {
+     background: #dc3545;
+}
+
+.content-sidebar .table table tbody tr td.t-body {
+     text-align: center;
+}
+
+.content-sidebar .table table tbody tr td.t-justify {
+     text-align: justify;
+     padding: 5px;
+}
+
+/* ============================PAGE EDIT============================  */
+
+.content-sidebar h1 {
+     text-transform: uppercase;
+     font-weight: 700;
+}
+.content-sidebar .form {
+     width:  100%;
+     padding: 30px;
+}
+
+.content-sidebar .form form .form-header,
+.content-sidebar .form form .form-country,
+.content-sidebar .form form .form-content {
+     padding: 15px;
+     text-align: center;
+}
+
+.content-sidebar .form form .form-country {
+     display: flex;
+     justify-content: space-around;
+}
+
+.content-sidebar .form form .form-country label{
+     padding-top: 15px;
+}
+
+.content-sidebar .form form label {
+     padding: 8px;
+     font-size: 20px;
+     font-weight: 600;
+     color: #505f75;
+     text-transform: uppercase;
+     padding: 15px;
+     margin-top: 15px;
+}
+
+.content-sidebar .form form input {
+     width: 50%;
+     margin: 0 auto;
+     border: none;
+     outline: none;
+     background: none;
+     display: block;
+     font-size: 17px;
+     border-bottom: 1px solid rgba(109, 93, 93, 0.4);
+     text-align: center;
+}
+
+.content-sidebar .form form textarea{
+     width: 100%;
+     margin: 0 auto;
+     border: none;
+     outline: none;
+     background: none;
+     display: block;
+     font-size: 17px;
+     border: 1px solid rgba(109, 93, 93, 0.4);
+     text-align: center;
+     padding: 15px;
+     margin-top: 20px;
+     border-radius: 5px;
+}
+
+.content-sidebar .form form button.btn {
+     padding: 10px;
+     background: #006669;
+     color: #fff;
+     border: 1px solid transparent;
+     border-radius: 5px;
+     margin: 30px;
+     font-size: 18px;
+}
+

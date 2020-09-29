@@ -10,7 +10,8 @@
      <link rel="stylesheet" href="Assets/CSS/style.css">
      <link rel="stylesheet" href="Assets/CSS/menu.css">
      <link rel="stylesheet" href="Assets/CSS/footer.css">
-
+     <link rel="stylesheet" href="Assets/CSS/errorBlock.css">
+     <link rel="stylesheet" href="Assets/CSS/msgError.css">
 
 
      <!-- fontawasome -->
@@ -24,18 +25,57 @@
 
      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
      <title>Travel Note </title>
+</head>
 
 <body>
-     <?php include 'Includes/nav.php' ?>
+     <div class="wrapper">
+          <header class="template">
+               <nav class="nav-visitor">
+                    <div class="logo">
+                         <a href="index.php">Travel Note</a>
+                    </div>
+                    <label for="btn" class="icon">
+                         <span class="fas fa-bars"></span>
+                    </label>
+                    <input type="checkbox" id="btn">
+                    <ul>
+                         <li><a href="index.php">Home</a></li>
+                         <li><a href="#">Continent visité</a></li>
+                         <li><a href="#">Contact</a></li>
+                         <li>
+                              <?php if ($this->isLogin) { ?>
+                              <label for="btn-1" class="show">Users + </label>
+                              <?php } ?>
 
-     <?= $content ?>
+                              <a href="index.php?action=signIn">
+                                   <div class="i fas fa-user"></div>
+                              </a>
+                              <input type="checkbox" id="btn-1">
+                              <ul>
+                              <?php if ($this->isLogin): ?>
+                                   <li><a href="#">Profile</a></li>
+                              <?php endif;?>
 
-     <?php include 'Includes/footer.php' ?>
+                              <?php if($this->isAdmin): ?>
+                                   <li><a href="index.php?action=dashboard">Dashboard</a></li>
+                              <?php endif; ?>
+
+                              <?php if ($this->isLogin): ?>
+                                   <li><a href="index.php?action=logout"><i class="fas fa-user-alt-slash"></i></a></li>
+                              <?php endif; ?>
+                              </ul>
+                         </li>
+                    </ul>
+               </nav>
+          </header>
+          <?= $content ?>
+
+          <?php include 'Includes/footer.php' ?>
      </div>
+
+
      <!-- Jquery -->
-     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-     </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
      <!-- bootstrap js -->
      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
