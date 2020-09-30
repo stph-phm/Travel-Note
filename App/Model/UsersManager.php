@@ -89,4 +89,42 @@ class UsersManager extends Manager
         ]);
         return $userById = $reqUSer->fetch();
     }
+
+    public function listUsers() 
+    {
+        $db = $this->dbConnect();
+        $reqUser = $db->query('
+            SELECT *
+            FROM users 
+            ORDER BY user_at ASC');
+        return  $articles = $reqUser->fetchAll();
+    }
+
+    public function blockUser($user_id)
+    {
+        $db = $this->dbConnect();
+        $reqUser = $db->prepare('
+            UPDATE users
+            SET is_blocked = 1
+            WHERE id = :id
+        ');
+
+        $reqUser->execute([
+            'id' => $user_id
+        ]);
+    }
+
+    public function unblockUser($user_id)
+    {
+        $db = $this->dbConnect();
+        $reqUser = $db->prepare('
+            UPDATE users
+            SET is_blocked = 0
+            WHERE id = :id
+        ');
+
+        $reqUser->execute([
+            'id' => $user_id
+        ]);
+    }
 }

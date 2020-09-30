@@ -16,6 +16,19 @@ class Users extends Controller
         parent::__construct();
     }
     
+    public function listUsers()
+    {
+        if (!$this->isAdmin) {
+            throw new \Exception('Aucun identifiant de billet envoyé');
+        }
+
+        $usersManager = new UsersManager;
+        $listUsers = $usersManager->listUsers();
+
+
+        include 'View/User/listUserView.php';
+    }
+
     public function signUp()
     {
         $username = "";
@@ -101,4 +114,71 @@ class Users extends Controller
         session_destroy();
         \header("Location: index.php?action=signIn");
     }
+
+    public function blockUser()
+    {
+        if (!$this->isAdmin) {
+            \header('Location: index.php');
+        }
+
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $user_id = $this->trim_secur($_GET['id']);
+            $usersManager = new UsersManager;
+            $userById = $usersManager->getUserById($user_id);
+
+            if(!$userById) {
+                throw new \Exception('Aucun identifiant de billet envoyé');
+            } else {
+                $usersManager->blockUser($user_id);
+
+                header('Location: index.php?action=managementUsers');
+            }
+        } else {
+            throw new \Exception('Aucun identifiant de billet envoyé');
+        }
+    }
+
+    public function unblockUser() {
+        if (!$this->isAdmin) {
+            \header('Location: index.php');
+        }
+
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $user_id = $this->trim_secur($_GET['id']);
+            $usersManager = new UsersManager;
+            $userById = $usersManager->getUserById($user_id);
+
+            if(!$userById) {
+                throw new \Exception('Aucun identifiant de billet envoyé');
+            } else {
+                $usersManager->unblockUser($user_id);
+
+                header('Location: index.php?action=managementUsers');
+            }
+        } else {
+            throw new \Exception('Aucun identifiant de billet envoyé');
+        }
+    }
+
+    public function displayUser()
+    {
+        if (!$this->isAdmin) {
+            header('Location: index.php');
+        }
+
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $user_id = $this->trim_secur($_GET['id']);
+            $usersManager = new UsersManager;
+            $userById = $usersManager->getUserById($user_id);
+
+            if (!$userById) {
+                throw new \Exception('Aucun identifiant de billet envoyé');
+            }
+        } else {
+            throw new \Exception('Aucun identifiant de billet envoyé');
+        }
+
+        include 'View/User/displayUser.php';
+    }
+
 }

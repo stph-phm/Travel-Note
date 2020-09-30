@@ -1,4 +1,4 @@
-<?php $title = "hHmepage" ?>
+<?php $title = "Homepage" ?>
 <?php ob_start(); ?>
     <div class="slider-container slider1">
         <div class="slider-items">

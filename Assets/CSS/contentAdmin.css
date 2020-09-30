@@ -1,74 +1,73 @@
-.content-sidebar h1.article-management {
-     font-size: 35px;
-     text-transform: uppercase;
-     padding: 10px;
+/* ===============PAGE LIST REPORT COMMENT/DASHBOARD=============== */
+.content-sidebar .part-dashboard {
+     text-align: center;
+     width: 100%;
 }
 
-.content-sidebar .table table  {
-     border-collapse: collapse;
-     padding: 15px;
-}
-
-.content-sidebar .table table, 
-.content-sidebar .table table th, 
-.content-sidebar .table table th tr {
-     border: 1px solid black;
-}
-
-
-.content-sidebar .table table thead tr {
-     background: #404046;
-     margin: 0;
-     text-transform: uppercase;
-     color: white;
-     height: 10vh;
-}
-
-
-.content-sidebar .table table tbody tr.t-content {
-     height: 14vh;
-}
-
-.content-sidebar .table table tbody tr td.t-action {
+td.t-report-comment {
      display: flex;
      justify-content: space-around;
-     align-items: center;
-     align-content: center;
-     height: 14vh;
-     border: 1px;
-     padding-top: 10px;
 }
 
-
-.content-sidebar .table table tbody tr td.t-action a {
-     padding: 10px;
+td.t-report-comment a.check-comment:hover {
      background: #006669;
-     color: #fff;
-     text-decoration: none;
-     border-radius: 10px;
-     font-weight: 600;
 }
 
-.content-sidebar .table table tbody tr td.t-action a.eyes:hover {
-     background: #0069d9;
-
+td.t-report-comment a.times-comment:hover {
+     background: #9E1820;
 }
 
-.content-sidebar .table table tbody tr td.t-action a.pencil:hover {
-     background: #6c757d;
-}
-
-.content-sidebar .table table tbody tr td.t-action a.times:hover {
-     background: #dc3545;
-}
-
-.content-sidebar .table table tbody tr td.t-body {
+/*=================== PAGE ARTICLE MANAGEMENT=================== */
+.part-management {
      text-align: center;
+     width: 100%;
 }
 
-.content-sidebar .table table tbody tr td.t-justify {
+td a.t-content-article {
+     text-decoration: none;
+     color: black;
+}
+
+td.td-content-article {
      text-align: justify;
-     padding: 5px;
+}
+
+td a.t-content-article:hover {
+     font-weight: 600;
+     color: #006669;
+}
+
+td i.t-published-ok {
+     color: #35bb29;
+     font-size: 30px;
+     font-weight: 800;
+}
+
+td i.t-published-no {
+     color: rgb(185, 29, 29);
+     font-size: 30px;
+     font-weight: 800;
+}
+
+td.t-action {
+     display: flex;
+     justify-content: space-around;
+}
+
+td.t-action a.publish:hover {
+     background: #006669;
+}
+
+td.t-action a.feather:hover {
+     background-color: #186d9e;
+}
+
+td.t-action a.pencil:hover {
+     background: #a039cf;
+}
+
+td.t-action a.times:hover {
+     background: #9E1820;
 }
 
 /* ============================PAGE EDIT============================  */
@@ -77,8 +76,9 @@
      text-transform: uppercase;
      font-weight: 700;
 }
+
 .content-sidebar .form {
-     width:  100%;
+     width: 100%;
      padding: 30px;
 }
 
@@ -94,7 +94,7 @@
      justify-content: space-around;
 }
 
-.content-sidebar .form form .form-country label{
+.content-sidebar .form form .form-country label {
      padding-top: 15px;
 }
 
@@ -120,7 +120,7 @@
      text-align: center;
 }
 
-.content-sidebar .form form textarea{
+.content-sidebar .form form textarea {
      width: 100%;
      margin: 0 auto;
      border: none;
@@ -145,3 +145,18 @@
      font-size: 18px;
 }
 
+
+/*======================== PAGE MANAGE USER======================== */
+.part-manage-user {
+     width: 100%;
+     text-align: center;
+}
+
+.part-manage-user table tr {
+     text-align: center;
+}
+
+td.t-user {
+     display: flex;
+     justify-content: space-around;
+}

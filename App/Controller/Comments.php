@@ -34,8 +34,12 @@ class Comments extends Controller
 
     public function listReportComments()
     {
-        
+        if (!$this->isAdmin) {
+            header('Location: index.php');
+        }
 
+        $commentsManager = new CommentsManager;
+        $reportedComments = $commentsManager->listReportedCom();
         include 'View/Comments/listReportComments.php';
     }
 
@@ -51,13 +55,50 @@ class Comments extends Controller
 
     public function validateReportComment()
     {
+        if (!$this->isAdmin) {
+            header('Location: index.php');
+        }
 
+        if(isset($_GET['id']) && $_GET['id'] > 0) {
+            $comment_id = $this->trim_secur($_GET['id']);
+            $commentsManager = new CommentsManager;
+            $commentById = $commentsManager->getCommentById($comment_id);
+
+            if (!$commentById) {
+                throw new \Exception("Aucun identifiant de billet envoyé");
+            } else {
+                $commentsManager->validateComReported($comment_id);
+
+                header('Location: index.php?action=dashboard');
+            }
+
+        }else {
+            throw new \Exception("Aucun identifiant de billet envoyé");
+        }
     }
 
     public function deleteReportCom()
     {
+        if (!$this->isAdmin) {
+            \header('Location: index.php');
+        }
 
+        if(isset($_GET['id']) && $_GET['id'] > 0) {
+            $comment_id = $this->trim_secur($_GET['id']);
+            $commentsManager = new CommentsManager;
+            $commentById = $commentsManager->getCommentById($comment_id);
+
+            if (!$commentById) {
+                throw new \Exception("Aucun identifiant de billet envoyé");
+            } else {
+                $commentsManager->deleteComment($comment_id);
+
+                header('Location: index.php?action=dashboard');
+            }
+
+        }else {
+            throw new \Exception("Aucun identifiant de billet envoyé");
+        }
     }
-       
 
 }

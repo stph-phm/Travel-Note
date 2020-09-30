@@ -70,13 +70,16 @@ class CommentsManager extends Manager
     {
         $db = $this->dbConnect();
         $reqComment = $db->query('
-            SELECT comments.id, users.username as pseudo, comment, reported, comment_at, article_id, user_id 
+            SELECT comments.*, users.username, articles.title 
             FROM comments 
             INNER JOIN users 
             ON comments.user_id = users.id 
-            WHERE reported = 1');
+            INNER JOIN articles 
+            ON comments.article_id = articles.id 
+            WHERE is_reported = 1
+        ');
 
-        return  $reportedComments = $reqComment->fetchAll();
+        return $reportedComments = $reqComment->fetchAll();
     }
 
     public function reportComment($comment_id)
@@ -98,7 +101,7 @@ class CommentsManager extends Manager
         $db = $this->dbConnect();
         $reqComment = $db->prepare(
             'UPDATE comments 
-            SET reported = 0 
+            SET is_reported = 0 
             WHERE id = :id');
 
         $reqComment->execute([

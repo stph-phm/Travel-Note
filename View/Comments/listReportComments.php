@@ -2,30 +2,36 @@
 <?php ob_start(); ?>
 <div class="part-dashboard">
      <div class="dashboard-header">
-          <div class="">
-               <h1>Les commentaires signalés</h1>
-          </div>
+          <h1>Les commentaires signalés</h1>
      </div>
+
      <div class="dashboard-body">
-          <table>
-               <thead>
-                    <th>#</th>
-                    <th>Pseudo</th>
-                    <th>Contenue du commentaire </th>
-                    <th width="300">Action</th>
+          <table class="table table-striped">
+               <thead class="thead-dark">
+                    <tr>
+                         <th>Titre de l'article </th>
+                         <th>Pseudo</th>
+                         <th>Contenue du commentaire </th>
+                         <th>Date de commentaire</th>
+                         <th>Action</th>
+                    </tr>
+
                </thead>
                <tbody>
-                    <?php foreach ($reportedComments as $commetsReport): ?>
+                    <?php foreach ($reportedComments as $commentReport): ?>
                     <tr>
-                         <td><?= $i++ ?></td>
-                         <td><?= htmlspecialchars($commetsReport['pseudo']) ?></td>
-                         <td><?= nl2br(htmlspecialchars($commetsReport['comment'])) ?></td>
-                         <td>
-                              <a href="index.php?action=validateReport&amp;id=<?= $commetsReport['id'] ?>">Valider <i class="fas fa-check"></i></a>
+                         <td class="t-content"><?= $commentReport['title'] ?></td>
+                         <td class="t-content"><?= htmlspecialchars($commentReport['username']) ?></td>
+                         <td class="t-content"><?= nl2br(htmlspecialchars($commentReport['comment'])) ?></td>
 
-                              <a href="index.php?action=deleteCommentReport&amp;id=<?= $commetsReport['id'] ?> ">Supprimer <i class="fas fa-times"></i></a>
+                         <td class="t-content"><?= date_format(date_create($commentReport['comment_at']), 'd/m/Y') ?></td>
+                         <td class="t-report-comment">
+                              <a href="index.php?action=validateReport&amp;id=<?= $commentReport['id'] ?>" class="check-comment btn btn-success">Valider <i
+                                        class="fas fa-check"></i></a>
+
+                              <a href="index.php?action=deleteCommentReport&amp;id=<?= $commentReport['id'] ?> " class="times-comment btn btn-secondary">Supprimer
+                                   <i class="fas fa-times"></i></a>
                          </td>
-
                     </tr>
                     <?php endforeach; ?>
                </tbody>

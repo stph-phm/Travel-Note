@@ -26,7 +26,6 @@ try {
             $comment->addComment();
             break;
         case 'articleContinent':
-
             $articles->listArticleByContinent();
             break;
         case 'signIn':
@@ -42,8 +41,8 @@ try {
             $users->logoutUser();
             break;
         case 'dashboard': 
-            $showDashboard = new Pages;
-            $showDashboard->showDashboard();
+            $comments = new Comments;
+            $comments->listReportComments();
             break;
         case 'articleManagement':
             $articles = new Articles;
@@ -59,15 +58,42 @@ try {
             break;
         case 'draftArticle':
                 $articles = new Articles;
-
-            $articles->draftArticle();
+                $articles->draftArticle();
             break;
+        case 'deleteArticle':
+            $articles = new Articles;
+            $articles->deleteArticle();
+            break;
+        case 'validateReport':
+            $comments = new Comments;
+            $comments->validateReportComment();
+            break;
+        case 'deleteReportCom':
+            $comments = new Comments;
+            $comments->deleteReportCom();
+            break;
+        case 'managementUsers':
+            $users = new Users;
+            $users->listUsers();
+            break;
+        case 'displayUser':
+            $users = new Users;
+            $users->displayUser();
+            break;
+        case 'blockedUser':
+            $users = new Users;
+            $users->blockUser();
+            break;
+        case 'unblockedUser':
+            $users = new Users;
+            $users->unblockUser();
+            break;
+
 
         default:
             $articles = new Articles;
             $articles->homepage();
             break;
-            
     }
 } catch (\Exception $e) {
     $errorMsgBlock = new Error;

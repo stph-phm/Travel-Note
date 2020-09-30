@@ -13,6 +13,9 @@
      <link rel="stylesheet" href="Assets/CSS/msgError.css">
      <link rel="stylesheet" href="Assets/CSS/contentAdmin.css">
 
+     <!-- Bootstrap -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
      <!-- fontawasome -->
      <script src="https://kit.fontawesome.com/effe484f35.js" crossorigin="anonymous"></script>
 
@@ -34,7 +37,7 @@
      <header class="header-admin">
           <div class="left_area">
 
-               <h3>Travel Note</h3>
+               <h3><a href="index.php">Travel Note</a> </h3>
           </div>
           <label for="check">
                <i class="fas fa-bars" id="sidebar_btn"></i>
@@ -52,9 +55,10 @@
           <a href="index.php"><i class="fas fa-desktop"></i>&nbsp; <span>Page d'accueil</span></a>
           <a href="index.php?action=articleManagement"><i class="fas fa-tasks"></i>&nbsp; <span>Gestions des articles
                </span></a>
-          <a href=""><i class="fas fa-comment-alt"></i>&nbsp; <span>Gestion des commentaires signalés</span></a>
+          <a href="index.php?action=dashboard"><i class="fas fa-comment-alt"></i>&nbsp; <span>Gestion des commentaires
+                    signalés</span></a>
           <a href=""><i class="fab fa-wpforms"></i>&nbsp; <span>Formulaire de contact</span></a>
-          <a href=""><i class="fas fa-users-cog"></i>&nbsp; <span> Gestion des utilisateurs</span></a>
+          <a href="index.php?action=managementUsers"><i class="fas fa-users-cog"></i>&nbsp; <span> Gestion des utilisateurs</span></a>
      </div>
 
      <div class="content-sidebar">
