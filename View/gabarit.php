@@ -42,6 +42,9 @@
           <label for="check">
                <i class="fas fa-bars" id="sidebar_btn"></i>
           </label>
+          <div class="home">
+               <a href="index.php"><i class="fas fa-desktop"></i>&nbsp; <span>Page d'accueil</span></a>
+          </div>
           <div class="right_area">
                <a href="index.php?action=logout" class="logout-btn"><i class="fas fa-user-alt-slash"></i></a>
           </div>
@@ -52,7 +55,7 @@
                <div class="profile_img"></div>
                <h4>Stephanie</h4>
           </center>
-          <a href="index.php"><i class="fas fa-desktop"></i>&nbsp; <span>Page d'accueil</span></a>
+          <a href="index.php?action=createArticle"><i class="fas fa-plus"></i>&nbsp; <span>Ajouter un article</span> </a>
           <a href="index.php?action=articleManagement"><i class="fas fa-tasks"></i>&nbsp; <span>Gestions des articles
                </span></a>
           <a href="index.php?action=dashboard"><i class="fas fa-comment-alt"></i>&nbsp; <span>Gestion des commentaires

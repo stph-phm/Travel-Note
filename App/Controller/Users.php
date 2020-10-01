@@ -181,4 +181,13 @@ class Users extends Controller
         include 'View/User/displayUser.php';
     }
 
+    public function profilUser()
+    {
+        if (!$this->isLogin) {
+        header('Location: index.php');
+        }
+
+        include 'View/User/profilView.php';
+    }
+
 }

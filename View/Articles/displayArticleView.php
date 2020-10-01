@@ -22,7 +22,9 @@
                </div>
           </div>
      </div>
-     <?php if ($this->isLogin) :?>
+
+     <?php if ($this->isLogin) {
+          if ($userById['is_blocked'] == 0) { ?>
      <div class="form-comment">
           <form action="index.php?action=addComment&amp;id= <?= $article['id']?>" method="POST">
                <div class="form-group">
@@ -32,11 +34,17 @@
                <input type="submit" class="btn btn-primary mb-4" value="Commentez">
           </form>
      </div>
-     <?php else: ?>
+     <?php } else { ?>
+     <p>Votre compte est bloquer par l'administrateur (trop de vos commentaires sont signaler) </p>
+     
+     <?php } ?>
+
+     <?php } else { ?>
      <div class="msg-display-article">
-          <h2>  <a href="index.php?action=signIn">Pour commenter veuillez vous connectez</a></h2>
+          <h2> <a href="index.php?action=signIn">Pour commenter veuillez vous connectez</a></h2>
      </div>
-     <?php endif; ?>
+     <?php } ?>
+
 
      <div class="part-comments">
           <h3>Réponse (Nbre de commentaire)</h3>

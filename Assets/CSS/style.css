@@ -314,3 +314,26 @@ section {
      transition: all .6s;
      margin: 10px;
 }
+
+/*==========================PAGE PROFIL==========================*/
+
+.part-profil{
+     text-align: center;
+}
+
+.part-profil h1 {
+     text-transform: uppercase;
+     padding: 25px;
+}
+
+.profil-user-body p {
+     font-size: 18px;
+     font-weight: 600;
+     padding: 10px;
+}
+
+.profil-user-body p.is-blocked {
+     color: #b41515;
+
+}
+

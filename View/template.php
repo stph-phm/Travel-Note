@@ -53,7 +53,7 @@
                               <input type="checkbox" id="btn-1">
                               <ul>
                               <?php if ($this->isLogin): ?>
-                                   <li><a href="#">Profile</a></li>
+                                   <li><a href="index.php?action=profil">Profile</a></li>
                               <?php endif;?>
 
                               <?php if($this->isAdmin): ?>

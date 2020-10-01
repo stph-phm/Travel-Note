@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use App\Model\ArticlesManager;
 use App\Model\CommentsManager;
-
+use App\Model\UsersManager;
 
 class Articles extends Controller{
 
@@ -33,6 +33,10 @@ class Articles extends Controller{
             } else {
                 $commentManager = new CommentsManager();
                 $listComments = $commentManager->listComments($article_id);
+                
+                $usersManager = new UsersManager;
+                $userById = $usersManager->getUserById($this->userInfo['id']);
+                
             }
         }
         include 'View/Articles/displayArticleView.php';
@@ -58,7 +62,39 @@ class Articles extends Controller{
 
     public function addArticle()
     {
-        include 'View/Articles/addArticleView.php';
+        if (!$this->isAdmin) {
+            \header('Location: index.php');
+        }
+
+        $article_title = "";
+        $content = "";
+        $continent = "";
+        $country = "";
+        $regions = "";
+        $city ="";
+
+        if (isset($_POST['submit'])) {
+            $article_title = $this->str_secur($_POST['title']);
+            $content = $this->str_secur($_POST['content']);
+            $continent = $this->str_secur($_POST['continent']);
+            $country = $this->str_secur($_POST['country']);
+            $regions = $this->str_secur($_POST['regions']);
+            $city =$this->str_secur($_POST['city']);
+            $published = $_POST['published'];
+
+            if (!empty($article_title && !empty($content) && !empty($continent)&& !empty($country) && !empty($regions) && !empty($city) )) {
+
+                
+                $articlesManager = new ArticlesManager();
+                $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);
+
+                header('Location: index.php?action=articleManagement');
+            } else {
+                $errorMsg = "Veuillez remplir tous les champs !";
+            }
+        }
+        
+        include 'View/Articles/createArticleView.php';
     }
 
     public function articleManagement()
@@ -67,8 +103,10 @@ class Articles extends Controller{
             \header('Location: index.php');
         } 
 
-        $articlesManager = new ArticlesManager;
-        $articles = $articlesManager->listArticles();
+
+            $articlesManager = new ArticlesManager;
+            $articles = $articlesManager->listArticles();
+
         include 'View/Articles/articleManagementView.php';
     }
 

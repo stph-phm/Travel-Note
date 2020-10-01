@@ -114,7 +114,7 @@ class CommentsManager extends Manager
         $db = $this->dbConnect();
         $reqComment = $db->prepare(
             'DELETE FROM comments 
-                WHERE id = :id');
+            WHERE id = :id');
 
         $reqComment->execute([
             'id' => $comment_id

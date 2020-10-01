@@ -10,13 +10,62 @@ td.t-report-comment {
 }
 
 td.t-report-comment a.check-comment:hover {
-     background: #006669;
+     background: #35bb29;
 }
 
 td.t-report-comment a.times-comment:hover {
      background: #9E1820;
 }
 
+/* ===========================PAGE CREATE ARTICLE===========================  */
+.part-addArticle {
+     width: 100%;
+}
+.part-addArticle .form form .title label input {
+     width: 90%;
+}
+
+.part-addArticle .form form .where {
+     display: flex;
+}
+
+.part-addArticle .form form label  {
+     display: flex;
+}
+
+.part-addArticle .form form label span {
+     width: 100px;
+}
+
+.part-addArticle .form form label input {
+     width: 70%;
+     margin: 0;
+}
+
+.part-addArticle .form form .is-published-or-draft {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.part-addArticle .form form .is-published-or-draft label span {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.part-addArticle .form form button.submit {
+     padding: 10px;
+     background: #006669;
+     color: white;
+     border: none;
+     border-radius : 5px
+}
+
+.part-addArticle .form form button.submit:hover {
+     background: #005558;
+     font-weight: 600;
+}
 /*=================== PAGE ARTICLE MANAGEMENT=================== */
 .part-management {
      text-align: center;
@@ -160,3 +209,18 @@ td.t-user {
      display: flex;
      justify-content: space-around;
 }
+
+td.t-user a.user-eye:hover {
+     background: #186d9e;
+     font-weight: 600;
+}
+
+td.t-user a.user-lock:hover {
+     background: #9E1820;
+     font-weight: 600;
+}
+td.t-user a.user-check:hover {
+     background: #35bb29;
+     font-weight: 600;
+}
+/*PAGE DISPLAY USER */

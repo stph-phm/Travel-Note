@@ -95,7 +95,6 @@ class Comments extends Controller
 
                 header('Location: index.php?action=dashboard');
             }
-
         }else {
             throw new \Exception("Aucun identifiant de billet envoyé");
         }

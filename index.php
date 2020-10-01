@@ -88,6 +88,14 @@ try {
             $users = new Users;
             $users->unblockUser();
             break;
+        case 'profil':
+            $users = new Users;
+            $users->profilUser();
+            break;
+        case 'createArticle':
+            $articles = new Articles;
+            $articles->addArticle();
+            break;
 
 
         default:

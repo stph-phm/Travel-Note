@@ -4,12 +4,12 @@ namespace App\Model;
 
 class ArticlesManager extends Manager
 {
-     public $article_id;
-     public $title;
-     public $content;
-     public $is_published;
-     public $created_at;
-     public $published_at;
+    public $article_id;
+    public $title;
+    public $content;
+    public $is_published;
+    public $created_at;
+    public $published_at;
 
 
     public function listArticlesPublished()
@@ -58,7 +58,7 @@ class ArticlesManager extends Manager
         $reqArticle = $db->prepare('
             SELECT * 
             FROM articles
-           GROUP BY continent 
+            GROUP BY continent 
         ');
 
         $reqArticle->execute([]);
@@ -136,6 +136,35 @@ class ArticlesManager extends Manager
         $reqArticle->execute([
             'id' => $article_id
         ]);
+    }
+
+    public function addArticle($title, $content, $continent,$country,$regions, $city, $is_published)
+    {
+        $db = $this->dbConnect();
+        $reqArticle = $db->prepare('
+            INSERT INTO articles(title, content, continent, country, regions, city, is_published, created_at, published_at)
+            VALUES(:title, :content, :continent, :country, :regions, :city, :is_published, NOW(), NOW() )
+        ');
+
+        $reqArticle->execute([
+            'title'=> $title, 
+            'content'=> $content, 
+            'continent'=> $continent, 
+            'country'=> $country, 
+            'regions'=> $regions, 
+            'city'=>$city, 
+            'is_published'=> $is_published
+        ]);
+    }
+
+    public function countArticle()
+    {
+        $db = $this->dbConnect();
+        $reqArticle = $db->prepare('
+            SELECT COUNT(id) AS nb_article FROM articles
+        ');
+
+        $reqArticle->execute();
     }
 
 }

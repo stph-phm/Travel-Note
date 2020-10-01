@@ -26,7 +26,7 @@
 
                          <td class="t-content"><?= date_format(date_create($commentReport['comment_at']), 'd/m/Y') ?></td>
                          <td class="t-report-comment">
-                              <a href="index.php?action=validateReport&amp;id=<?= $commentReport['id'] ?>" class="check-comment btn btn-success">Valider <i
+                              <a href="index.php?action=validateReport&amp;id=<?= $commentReport['id'] ?>" class="check-comment btn btn-secondary">Valider <i
                                         class="fas fa-check"></i></a>
 
                               <a href="index.php?action=deleteCommentReport&amp;id=<?= $commentReport['id'] ?> " class="times-comment btn btn-secondary">Supprimer

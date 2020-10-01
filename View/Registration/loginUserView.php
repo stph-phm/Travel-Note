@@ -18,6 +18,7 @@
                 </div>
                 <button type="submit" name="connect">Se connecter</button>
             </form>
+
         </div>
         <?php include 'View/Page/errorMsg.php'; ?>
     </div>
