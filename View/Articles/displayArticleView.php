@@ -26,13 +26,13 @@
      <?php if ($this->isLogin) {
           if ($userById['is_blocked'] == 0) { ?>
      <div class="form-comment">
-          <form action="index.php?action=addComment&amp;id= <?= $article['id']?>" method="POST">
+
                <div class="form-group">
                     <label for="comment">Commentaire</label>
-                    <textarea id="mytextarea" class="form-control" rows="3" name="comment"></textarea>
+                    <textarea id="comment" class="form-control" rows="3" name="comment"></textarea>
                </div>
-               <input type="submit" class="btn btn-primary mb-4" value="Commentez">
-          </form>
+               <button id="sendComment" class="btn btn-primary mb-4" data-id="<?= $article['id']?>" > Commentez </button>
+
      </div>
      <?php } else { ?>
      <p>Votre compte est bloquer par l'administrateur (trop de vos commentaires sont signaler) </p>
@@ -50,13 +50,8 @@
           <h3>Réponse (Nbre de commentaire)</h3>
 
           <div class="comments">
-               <?php foreach ($listComments as $comments): ?>
-               <p>
-                    <?= $comments['username'] ?>
-                    <?= date_format(date_create($comments['comment_at']), 'd/m/Y'); ?>
-               </p>
-
-               <p><?= $comments['comment']?></p>
+               <?php foreach ($listComments as $showComments): ?>
+                    <?php include 'View/Comments/displayCommentsView.php' ?>
                <?php endforeach; ?>
           </div>
      </div>

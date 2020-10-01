@@ -11,9 +11,10 @@ class Comments extends Controller
 {
     public function addComment()
     {
+        
         if (isset($_GET['id']) && $_GET['id'] > 0 ) {
             $article_id = $this->trim_secur($_GET['id']);
-            $comment = $this->trim_secur($_POST['comment']);
+            $comment = $this->trim_secur(json_decode(file_get_contents("php://input"))->comment);
             $sessionId = $this->trim_secur($_SESSION['userId']);
 
             $articlesManager = new ArticlesManager();
@@ -24,8 +25,12 @@ class Comments extends Controller
             } else {
                 if (!empty($comment)) {
                     $commentsManager = new CommentsManager();
-                    $commentsManager->addComment($comment, $article_id, $sessionId);
-                } else {
+                    $id =  $commentsManager->addComment($comment, $article_id, $sessionId);
+
+                    $showComments = $commentsManager->getCommentById($id);
+                    var_dump($id);
+                    include 'View/Comments/displayCommentsView.php';
+                    } else {
                     $errorMsg = "Veuillez remplir tous les champs !";
                 }
             }
