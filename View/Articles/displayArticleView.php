@@ -49,7 +49,7 @@
      <div class="part-comments">
           <h3>Réponse (Nbre de commentaire)</h3>
 
-          <div class="comments">
+          <div class="comments" id="listComments">
                <?php foreach ($listComments as $showComments): ?>
                <?php include 'View/Comments/displayCommentsView.php' ?>
                <?php endforeach; ?>

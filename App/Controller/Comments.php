@@ -28,7 +28,7 @@ class Comments extends Controller
                     $id =  $commentsManager->addComment($comment, $article_id, $sessionId);
 
                     $showComments = $commentsManager->getCommentById($id);
-                    var_dump($id);
+
                     include 'View/Comments/displayCommentsView.php';
                     } else {
                     $errorMsg = "Veuillez remplir tous les champs !";

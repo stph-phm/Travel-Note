@@ -70,7 +70,7 @@ class ArticlesManager extends Manager
     public function listArticlesByCountry($continent) {
         $db = $this->dbConnect();
         $reqArticle = $db->prepare('
-            SELECT continent
+            SELECT *
             FROM articles 
             WHERE continent = :continent
             GROUPE BY country

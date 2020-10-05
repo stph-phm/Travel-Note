@@ -130,7 +130,7 @@ class Articles extends Controller{
 
             if (!empty($article_title && !empty($content) && !empty($continent)&& !empty($country) && !empty($regions) && !empty($city) )) {
 
-                if ($published == true) {
+                if ($published == 1) {
                     $published = 1;
                     $articlesManager = new ArticlesManager();
                     $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);

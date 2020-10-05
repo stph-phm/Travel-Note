@@ -28,9 +28,11 @@ class CommentsManager extends Manager
     {
         $db = $this->dbConnect();
         $reqComment = $db->prepare('
-            SELECT * 
+            SELECT comments.*, users.username
             FROM comments 
-            WHERE id = :id
+            INNER JOIN users
+            ON comments.user_id = users.id
+            WHERE comments.id = :id
         ');
         $reqComment ->execute([
             'id' => $comment_id
@@ -46,13 +48,15 @@ class CommentsManager extends Manager
             VALUES (:comment, NOW(), :article_id, :user_id)
         ');
 
+        $reqComment->execute([
+            'comment' => $comment,
+            'article_id' => $article_id,
+            'user_id' => $user_id
+        ]);
+
         return $db->lastInsertId("comments");
 
-        // return $reqComment->execute([
-        //     'comment' => $comment,
-        //     'article_id' => $article_id,
-        //     'user_id' => $user_id
-        // ]);
+
     }
 
     public function getLastId() 
