@@ -9,6 +9,7 @@ use App\Controller\Articles;
 use App\Controller\Comments;
 use App\Controller\Error;
 use App\Controller\Pages;
+use App\Model\ArticlesManager;
 
 $action = '';
 if (isset($_GET['action'])) {
@@ -25,8 +26,14 @@ try {
             $comment = new Comments();
             $comment->addComment();
             break;
-        case 'articleContinent':
-            $articles->listArticleByContinent();
+        case 'listContinent':
+            $articles = new Articles;
+            $articles->listContinent();
+            break;
+        case 'listCountry':
+            $articles = new Articles;
+            $articles->listArticleByCountry();
+            $articlesManagers = new ArticlesManager;
             break;
         case 'signIn':
             $users = new Users();
@@ -92,9 +99,9 @@ try {
             $users = new Users;
             $users->profilUser();
             break;
-        case 'createArticle':
+        case 'publishArticle':
             $articles = new Articles;
-            $articles->addArticle();
+            $articles->publishArticle();
             break;
 
 

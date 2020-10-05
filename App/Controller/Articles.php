@@ -42,22 +42,68 @@ class Articles extends Controller{
         include 'View/Articles/displayArticleView.php';
     }
 
-    public function listArticleByContinent()
+    public function listContinent()
     {
+        $articlesManager = new ArticlesManager;
+        $listContinent = $articlesManager->listArticleByContinent();
 
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $articlesManager = new ArticlesManager;
-            $articleCountry = $
-            $continentAmerique = $articlesManager->listArticleByContinent();
-            include 'View/Articles/listArticleByContinentView.php';
-        }
+        include 'View/Articles/listArticleByContinentView.php';
+
 
     }
 
     public function listArticleByCountry()
     {
+        if (isset($_GET['countries']) && !empty($_GET['countries'])) {
+            $articleByContinent = $this->trim_secur($_GET['countries']);
 
+            $articlesManager = new ArticlesManager();
+            $article = $articlesManager->listArticlesByCountry($articleByContinent);
+            if ($article) {
+                throw new \Exception('Aucun identifiant de billet envoyé');
+            } 
+        }    
         include 'View/Articles/listArticleByCountryView.php';
+    }
+
+    public function publishArticle() {
+        
+        if (!$this->isAdmin) {
+            \header('Location: index.php');
+        }
+
+        
+        $article_title = "";
+        $content = "";
+        $continent = "";
+        $country = "";
+        $regions = "";
+        $city ="";
+        $isCheck = "";
+
+        if (isset($_POST['submit'])) {
+            $article_title = $this->str_secur($_POST['title']);
+            $content = $this->str_secur($_POST['content']);
+            $continent = $this->str_secur($_POST['continent']);
+            $country = $this->str_secur($_POST['country']);
+            $regions = $this->str_secur($_POST['regions']);
+            $city =$this->str_secur($_POST['city']);
+            $isCheck = $_POST['published'];
+
+            if (!empty($article_title && !empty($content) && !empty($continent)&& !empty($country) && !empty($regions) && !empty($city) )) {
+
+                if ($isCheck == 1) {
+                    $isCheck = 1;
+                    $articlesManager = new ArticlesManager();
+                    $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$isCheck);
+                    header('Location: index.php?action=articleManagement');
+                } 
+                
+            } else {
+                $errorMsg = "Veuillez remplir tous les champs !";
+            }
+        }
+        include 'View/Articles/createArticleView.php';
     }
 
     public function addArticle()
@@ -84,11 +130,18 @@ class Articles extends Controller{
 
             if (!empty($article_title && !empty($content) && !empty($continent)&& !empty($country) && !empty($regions) && !empty($city) )) {
 
+                if ($published == true) {
+                    $published = 1;
+                    $articlesManager = new ArticlesManager();
+                    $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);
+                    header('Location: index.php?action=articleManagement');
+                } else {
+                    $published = 0;
+                    $articlesManager = new ArticlesManager();
+                    $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);
+                    header('Location: index.php?action=articleManagement');
+                } 
                 
-                $articlesManager = new ArticlesManager();
-                $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);
-
-                header('Location: index.php?action=articleManagement');
             } else {
                 $errorMsg = "Veuillez remplir tous les champs !";
             }

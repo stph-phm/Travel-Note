@@ -12,7 +12,7 @@
                               <span><i class="fas fa-calendar-alt"> &nbsp; </i>
                                    <?= date_format(date_create($article['published_at']), 'd/m/Y') ?> |
                                    &nbsp;</span>
-                              <span>category</span>
+                              <span><?= htmlspecialchars($article['city']) ?> - <?= htmlspecialchars($article['country']) ?>  </span>
                          </p>
                     </div>
                </div>
@@ -51,7 +51,7 @@
 
           <div class="comments">
                <?php foreach ($listComments as $showComments): ?>
-                    <?php include 'View/Comments/displayCommentsView.php' ?>
+               <?php include 'View/Comments/displayCommentsView.php' ?>
                <?php endforeach; ?>
           </div>
      </div>

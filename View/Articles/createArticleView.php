@@ -38,7 +38,9 @@
                </div>
                <div class="is-published-or-draft">
                     
-                    <label for="published">Souhaitez-vous publier directement l'article ? <span><input type="checkbox" name="published" id="published"></span></label>
+                    <label for="published">Souhaitez-vous publier directement l'article ? <span><input type="checkbox" name="published" id="published" value="on"></span> 
+                    </label>
+                    <p>cochez la case si vous voulez publier l'article</p>
                </div>
 
                <button type="submit" class="submit">Ajouter un article </button>
