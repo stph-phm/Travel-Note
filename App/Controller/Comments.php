@@ -63,12 +63,45 @@ class Comments extends Controller
 
     public function reportComment()
     {
-        
+        if (isset($_GET['id']) && $_GET['id'] >0 ) {
+            $comment_id = $this->trim_secur($_GET['id']);
+            $commentsManager = new CommentsManager;
+            $commentById = $commentsManager->getCommentById($comment_id);
+
+            if(!$commentById) {
+                throw new \Exception("Aucun identifiant de billet envoyé");
+            } else {
+                $commentReported = $commentsManager->reportComment($comment_id);
+
+                header('Location: index.php?action=article&id='.$commentById['article_id']);
+            }
+        } else {
+            throw new \Exception("Aucun identifiant de billet envoyé");
+        }
     }
 
     public function deleteComment()
     {
+        if (!$this->isAdmin) {
+            \header('Location: index.php');
+        }
 
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $comment_id = $this->trim_secur($_GET['id']);
+            $commenstManager = new CommentsManager();
+            $commentById = $commenstManager->getCommentById($comment_id);
+
+            if (!$commentById) {
+                throw new \Exception('Aucun identifiant de billet envoyé');
+            }
+            else {
+                $commenstManager->deleteComment($comment_id);
+                \header('Location: index.php?action=article&id='.$commentById['article_id']);
+            }
+        }
+        else {
+            throw new \Exception("Aucun identifiant de billet envoyé");
+        }
     }
 
     public function validateReportComment()

@@ -39,7 +39,7 @@
             <p>
                 <span><i class="fas fa-user"> &nbsp; </i> Stéphanie Pham | &nbsp;</span>
                 <span><i class="fas fa-calendar-alt"> &nbsp; </i> <?= date_format(date_create($listArticle['published_at']), 'd/m/Y') ?> | &nbsp;</span>
-                <span>category</span>
+                <span><?= htmlspecialchars($listArticle['country']) ?> - <?= htmlspecialchars($listArticle['city']) ?></span>
             </p>
         </div>
 
@@ -54,7 +54,9 @@
     <div class="section-category">
         <div class="about-me">
             <h2>A propos de moi</h2>
-            <div class="about-me-img"></div>
+            <div class="about-me-img">
+                <img src="Assets\Images\6.jpg">
+            </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ipsum ipsa reiciendis voluptates
                 dolorum debitis rem odio accusantium, error sit vero, facere, sequi dolore veritatis reprehenderit
                 architecto saepe quam. Voluptatum.</p>

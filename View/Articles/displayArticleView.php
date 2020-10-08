@@ -22,7 +22,7 @@
                </div>
           </div>
      </div>
-
+          <!-- -----------------------COMMENTS----------------------- -->
      <?php if ($this->isLogin) {
           if ($userById['is_blocked'] == 0) { ?>
      <div class="form-comment">
@@ -47,7 +47,7 @@
 
 
      <div class="part-comments">
-          <h3>Réponse (Nbre de commentaire)</h3>
+          <h3>Réponse</h3>
 
           <div class="comments" id="listComments">
                <?php foreach ($listComments as $showComments): ?>

@@ -102,14 +102,26 @@ main section {
 
 
 
+
 .article-body {
      text-align: justify;
 }
 
+.article-body button {
+     padding: 10px;
+     background: #005255;
+     border-radius: 5px;
+
+}
+
+.article-body button a {
+     text-decoration: none;
+     color: #fff;
+}
 
 
 .section-category {
-     background: purple;
+     background: #d4d4d4b6;
      width: 600px;
      padding: 10px;
      text-align: center;
@@ -121,8 +133,7 @@ main section {
      align-items: center;
 }
 
-.about-me-img {
-     background: blue;
+.about-me-img img {
      width: 130px;
      height: 130px;
      border-radius: 50%;
@@ -131,6 +142,9 @@ main section {
 .about-me p {
      text-align: justify;
 }
+
+/* ===============================ARTICLE HOMEPAGE=============================== */
+
 
 /* ----------------------------PAGE ARTICLE--------------------------  */
 
@@ -267,8 +281,44 @@ main section {
      font-weight: normal;
 }
 
+.show-comments div {
+     display: flex;
+}
+
+.show-comments div p {
+     margin-right: 5px;
+}
+
+.show-comments div a {
+     text-decoration: none;
+     color: #b41515;
+}
 
 
+.report-comment {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: #f8d7da;
+     text-align: center;
+     height: 5em;
+}
+
+.report-comment p {
+     margin: 0;
+     font-weight: 700;
+     color: #8b3e46;
+}
+
+.report-comment a {
+     font-size: 18px;
+     color: #b41515;
+     margin: 0 5px;
+}
+.report-comment a:hover {
+     color: #8b3e46;
+     font-weight: 800;
+}
 /*------------------PAGE TOUS LES article------------------ */
 
 .list-articles {
@@ -476,20 +526,20 @@ main section {
 }
 
 /* -----------------------------------------RESPONSIVE----------------------------------------- */
-     @media (max-width : 1080px) {
-          .image {
-               flex: 100%;
-               max-width: 480px;
-          }
+@media (max-width : 1080px) {
+     .image {
+          flex: 100%;
+          max-width: 480px;
+     }
+}
+
+@media (max-width : 400px) {
+     .image .details p {
+          font-size: 16px;
      }
 
-     @media (max-width : 400px) {
-          .image .details p {
-               font-size: 16px;
-          }
-
-          .more .read-more,
-          .more .icon-links a i {
-               font-size: 18px;
-          }
+     .more .read-more,
+     .more .icon-links a i {
+          font-size: 18px;
      }
+}

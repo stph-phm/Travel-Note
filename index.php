@@ -98,7 +98,14 @@ try {
             $articles = new Articles;
             $articles->addArticle();
             break;
-
+        case 'reportComment':
+            $comments = new Comments;
+            $comments->reportComment();
+            break;
+        case 'deleteComm':
+            $comments = new Comments;
+            $comments->deleteComment();
+            break;
 
         default:
             $articles = new Articles;
