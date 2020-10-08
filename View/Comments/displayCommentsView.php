@@ -4,7 +4,7 @@
             <p class="username"><?= $showComments['username'] ?> <span>dit : </span> </p>
             <div>
                   <p><?= date_format(date_create($showComments['comment_at']), 'd/m/Y')  ?> </p>
-                  <a href="index.php?action=reportComment&amp;id=<?= $showComments['id'] ?>"><i class="fas fa-flag"></i></a>
+                  <a href="index.php?action=reportComment&amp;id=<?= $showComments['id'] ?>" class="linkDelete"><i class="fas fa-flag"></i></a>
             </div>
 
       </div>

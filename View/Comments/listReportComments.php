@@ -29,7 +29,7 @@
                               <a href="index.php?action=validateReport&amp;id=<?= $commentReport['id'] ?>" class="check-comment btn btn-secondary">Valider <i
                                         class="fas fa-check"></i></a>
 
-                              <a href="index.php?action=deleteCommentReport&amp;id=<?= $commentReport['id'] ?> " class="times-comment btn btn-secondary">Supprimer
+                              <a href="index.php?action=deleteCommentReport&amp;id=<?= $commentReport['id'] ?> " class="times-comment btn btn-secondary linkDelete">Supprimer
                                    <i class="fas fa-times"></i></a>
                          </td>
                     </tr>

@@ -48,7 +48,7 @@
                                         class="fas fa-pencil-alt"></i> Modifier </i></a>
 
                               <a href="index.php?action=deleteArticle&amp;id=<?= $listArticle['id'] ?>"
-                                   class="times btn btn-secondary"><i class="fas fa-times"></i> Supprimer</a>
+                                   class="times btn btn-secondary linkDelete"><i class="fas fa-times"></i> Supprimer</a>
                          </td>
                     </tr>
                     <?php endforeach; ?>

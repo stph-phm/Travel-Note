@@ -8,3 +8,4 @@ class Main {
 tinymce.init({
      selector: 'textarea#default'
 });
+

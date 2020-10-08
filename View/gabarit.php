@@ -55,12 +55,14 @@
                <div class="profile_img"></div>
                <h4>Stephanie</h4>
           </center>
-          <a href="index.php?action=createArticle"><i class="fas fa-plus"></i>&nbsp; <span>Ajouter un article</span> </a>
+          <a href="index.php?action=createArticle"><i class="fas fa-plus"></i>&nbsp; <span>Ajouter un article</span>
+          </a>
           <a href="index.php?action=articleManagement"><i class="fas fa-tasks"></i>&nbsp; <span>Gestions des articles
                </span></a>
           <a href="index.php?action=dashboard"><i class="fas fa-comment-alt"></i>&nbsp; <span>Gestion des commentaires
                     signalés</span></a>
-          <a href="index.php?action=managementUsers"><i class="fas fa-users-cog"></i>&nbsp; <span> Gestion des utilisateurs</span></a>
+          <a href="index.php?action=managementUsers"><i class="fas fa-users-cog"></i>&nbsp; <span> Gestion des
+                    utilisateurs</span></a>
      </div>
 
      <div class="content-sidebar">
@@ -77,6 +79,9 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
      <!-- javascript -->
+     <script src="Assets/JS/app.js"></script>
+     <script src="Assets/JS/form.js"></script>
+     <script src="Assets/JS/comment.js"></script>
      <script src="Assets/JS/menu.js"></script>
      <script src="Assets/JS/slider.js"></script>
      <script src="Assets/JS/main.js"></script>

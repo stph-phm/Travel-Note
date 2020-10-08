@@ -52,6 +52,7 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
      <!-- javascript -->
+     <script src="Assets/JS/app.js"></script>
      <script src="Assets/JS/comment.js"></script>
      <script src="Assets/JS/menu.js"></script>
      <script src="Assets/JS/slider.js"></script>

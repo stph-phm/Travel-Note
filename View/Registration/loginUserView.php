@@ -16,7 +16,7 @@
                     <label for="pswd">Votre mot de passe : </label>
                     <input type="password" class="form-control" name="pswd" id="pswd" value="<?= $pswd ?>"> <br>
                 </div>
-                <button type="submit" name="connect">Se connecter</button>
+                <button type="submit" name="connect" id="btnForm">Se connecter</button>
             </form>
 
         </div>
