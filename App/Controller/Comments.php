@@ -43,14 +43,27 @@ class Comments extends Controller
             header('Location: index.php');
         }
 
+        if (isset($_GET['page']) && $_GET['page'] > 0) {
+            $currentPage = intval($_GET['page']);
+            
+        } else {
+            $currentPage = 1;
+        }
+            $commentsManager = new CommentsManager();
+            $resultComments = $commentsManager->totalComments();
+            $nbArticles = intval($resultComments['totalComments']);
+            $perPages = 5;
+            $pages = ceil($nbArticles / $perPages);
+            $firstPage = ($currentPage * $perPages) - $perPages;
+
         $commentsManager = new CommentsManager;
-        $reportedComments = $commentsManager->listReportedCom();
+        $reportedComments = $commentsManager->listReportedCom($firstPage, $perPages);
         include 'View/Comments/listReportComments.php';
     }
 
     public function reportComment()
     {
-
+        
     }
 
     public function deleteComment()

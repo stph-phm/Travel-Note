@@ -32,6 +32,7 @@
 
 <section>
     <div class="section-article">
+
         <?php foreach ($articles as $listArticle): ?>
         <div class="article-header">
             <h2><?= htmlspecialchars($listArticle['title'])?></h2>
@@ -41,12 +42,15 @@
                 <span>category</span>
             </p>
         </div>
+
         <div class="article-body">
             <p><?=  nl2br(mb_substr($listArticle['content'], 0, 300)) ?> </p>
             <button><a href="index.php?action=article&amp;id=<?= $listArticle['id'] ?>">Lire la suite...</a></button>
         </div>
         <?php endforeach; ?>
     </div>
+
+
     <div class="section-category">
         <div class="about-me">
             <h2>A propos de moi</h2>

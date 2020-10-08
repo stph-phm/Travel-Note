@@ -12,28 +12,32 @@ class ArticlesManager extends Manager
     public $published_at;
 
 
-    public function listArticlesPublished()
+    public function listArticlesPublished($firstPage, $perPage)
     {
 
         $db = $this->dbConnect();
-        $reqArticle = $db->query('
-            SELECT *
+        $reqArticle = $db->prepare(" 
+            SELECT * 
             FROM articles 
-            WHERE is_published = 1
-            ORDER BY created_at ASC
-        ');
+            WHERE is_published = 1 
+            ORDER BY created_at ASC 
+            LIMIT $firstPage, $perPage
+        ");
+
+        $reqArticle->execute();
         return $articles = $reqArticle->fetchAll();
     }
 
-    public function listArticles()
+    public function listArticles($firstPage, $perPage)
     {
-
         $db = $this->dbConnect();
-        $reqArticle = $db->query('
+        $reqArticle = $db->prepare("
             SELECT *
             FROM articles 
-            ORDER BY created_at ASC
-        ');
+            ORDER BY created_at ASC 
+            LIMIT $firstPage, $perPage
+        ");
+        $reqArticle->execute();
         return $articles = $reqArticle->fetchAll();
     }
 
@@ -53,35 +57,6 @@ class ArticlesManager extends Manager
         return $article = $req->fetch();
     }
 
-    public function listArticleByContinent() {
-        $db = $this->dbConnect();
-        $reqArticle = $db->prepare('
-            SELECT * 
-            FROM articles
-            GROUP BY continent 
-        ');
-
-        $reqArticle->execute([]);
-
-        return $articleContinent = $reqArticle->fetchAll();
-    }
-
-
-    public function listArticlesByCountry($continent) {
-        $db = $this->dbConnect();
-        $reqArticle = $db->prepare('
-            SELECT *
-            FROM articles 
-            WHERE continent = :continent
-            GROUPE BY country
-        ');
-
-        $reqArticle->execute([
-            'countinent' => $continent
-        ]);
-
-        return  $articleCountry = $reqArticle->fetch();
-    }
 
     public function editArticle($article_id, $title, $content, $continent, $country, $region, $city) {
         $db = $this->dbConnect();
@@ -158,14 +133,16 @@ class ArticlesManager extends Manager
         ]);
     }
 
-    public function countArticle()
+    public function totalArticle()
     {
         $db = $this->dbConnect();
         $reqArticle = $db->prepare('
-            SELECT COUNT(id) AS nb_article FROM articles
+            SELECT COUNT(*) AS totalArticle FROM articles
         ');
 
         $reqArticle->execute();
+
+        return $resultArticle = $reqArticle->fetch();
     }
 
 }

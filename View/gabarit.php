@@ -20,7 +20,7 @@
      <script src="https://kit.fontawesome.com/effe484f35.js" crossorigin="anonymous"></script>
 
      <!-- google font -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
+     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
 
      <!-- TINIMCE -->
      <script src="https://cdn.tiny.cloud/1/zxws6oho4y58ubsdfptbp4gb3420xahucxayj6amm3ptdqxt/tinymce/5/tinymce.min.js"
@@ -60,7 +60,6 @@
                </span></a>
           <a href="index.php?action=dashboard"><i class="fas fa-comment-alt"></i>&nbsp; <span>Gestion des commentaires
                     signalés</span></a>
-          <a href=""><i class="fab fa-wpforms"></i>&nbsp; <span>Formulaire de contact</span></a>
           <a href="index.php?action=managementUsers"><i class="fas fa-users-cog"></i>&nbsp; <span> Gestion des utilisateurs</span></a>
      </div>
 

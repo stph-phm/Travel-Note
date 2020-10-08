@@ -26,14 +26,9 @@ try {
             $comment = new Comments();
             $comment->addComment();
             break;
-        case 'listContinent':
+        case 'listAllArticles':
             $articles = new Articles;
-            $articles->listContinent();
-            break;
-        case 'listCountry':
-            $articles = new Articles;
-            $articles->listArticleByCountry();
-            $articlesManagers = new ArticlesManager;
+            $articles->listAllArticles();
             break;
         case 'signIn':
             $users = new Users();
@@ -99,9 +94,9 @@ try {
             $users = new Users;
             $users->profilUser();
             break;
-        case 'publishArticle':
+        case 'createArticle':
             $articles = new Articles;
-            $articles->publishArticle();
+            $articles->addArticle();
             break;
 
 

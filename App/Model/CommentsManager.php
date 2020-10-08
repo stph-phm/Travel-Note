@@ -80,18 +80,22 @@ class CommentsManager extends Manager
         ]);
     }
 
-    public function listReportedCom()
+    public function listReportedCom($firstPage, $perPage)
     {
         $db = $this->dbConnect();
-        $reqComment = $db->query('
+        $reqComment = $db->prepare("
             SELECT comments.*, users.username, articles.title 
             FROM comments 
             INNER JOIN users 
             ON comments.user_id = users.id 
             INNER JOIN articles 
             ON comments.article_id = articles.id 
-            WHERE is_reported = 1
-        ');
+            WHERE is_reported = 1 
+            LIMIT $firstPage, $perPage
+            
+        ");
+
+        $reqComment->execute();
 
         return $reportedComments = $reqComment->fetchAll();
     }
@@ -134,4 +138,17 @@ class CommentsManager extends Manager
             'id' => $comment_id
         ]);
     }
+
+    public function totalComments()
+    {
+        $db = $this->dbConnect();
+        $reqComment = $db->prepare('
+            SELECT COUNT(*) AS totalComments FROM comments
+        ');
+
+        $reqComment->execute();
+
+        return $resultComments = $reqComment->fetch();
+    }
+    
 }

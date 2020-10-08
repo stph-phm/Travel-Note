@@ -13,9 +13,20 @@ class Articles extends Controller{
     }
 
     public function homepage()
-    {
+    { if (isset($_GET['page']) && $_GET['page'] > 0) {
+            $currentPage = intval(trim($_GET['page']));
+        } else {
+            $currentPage = 1;
+        }
+
         $articlesManager = new ArticlesManager;
-        $articles = $articlesManager->listArticlesPublished();
+        $resultArticle = $articlesManager->totalArticle();
+        $nbArticles = intval($resultArticle['totalArticle']);
+
+        $perPage = 1;
+        $pages = ceil($nbArticles / $perPage);
+        $fistPage = ($currentPage * $perPage) - $perPage;
+        $articles = $articlesManager->listArticlesPublished($fistPage, $perPage);
 
         include 'View/Articles/homepageView.php';
     }
@@ -42,69 +53,26 @@ class Articles extends Controller{
         include 'View/Articles/displayArticleView.php';
     }
 
-    public function listContinent()
-    {
+    public function listAllArticles() {
+        if (isset($_GET['page']) && $_GET['page'] > 0) {
+            $currentPage = intval(trim($_GET['page']));
+        } else {
+            $currentPage = 1;
+        }
+
         $articlesManager = new ArticlesManager;
-        $listContinent = $articlesManager->listArticleByContinent();
+        $resultArticle = $articlesManager->totalArticle();
+        $nbArticles = intval($resultArticle['totalArticle']);
+        $perPage = 5;
+        $pages = ceil($nbArticles / $perPage);
+        $fistPage = ($currentPage * $perPage) - $perPage;
 
-        include 'View/Articles/listArticleByContinentView.php';
+        $articles = $articlesManager->listArticlesPublished($fistPage, $perPage);
 
-
+        include 'View/Articles/listsArticlesView.php';
     }
 
-    public function listArticleByCountry()
-    {
-        if (isset($_GET['countries']) && !empty($_GET['countries'])) {
-            $articleByContinent = $this->trim_secur($_GET['countries']);
 
-            $articlesManager = new ArticlesManager();
-            $article = $articlesManager->listArticlesByCountry($articleByContinent);
-            if ($article) {
-                throw new \Exception('Aucun identifiant de billet envoyé');
-            } 
-        }    
-        include 'View/Articles/listArticleByCountryView.php';
-    }
-
-    public function publishArticle() {
-        
-        if (!$this->isAdmin) {
-            \header('Location: index.php');
-        }
-
-        
-        $article_title = "";
-        $content = "";
-        $continent = "";
-        $country = "";
-        $regions = "";
-        $city ="";
-        $isCheck = "";
-
-        if (isset($_POST['submit'])) {
-            $article_title = $this->str_secur($_POST['title']);
-            $content = $this->str_secur($_POST['content']);
-            $continent = $this->str_secur($_POST['continent']);
-            $country = $this->str_secur($_POST['country']);
-            $regions = $this->str_secur($_POST['regions']);
-            $city =$this->str_secur($_POST['city']);
-            $isCheck = $_POST['published'];
-
-            if (!empty($article_title && !empty($content) && !empty($continent)&& !empty($country) && !empty($regions) && !empty($city) )) {
-
-                if ($isCheck == 1) {
-                    $isCheck = 1;
-                    $articlesManager = new ArticlesManager();
-                    $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$isCheck);
-                    header('Location: index.php?action=articleManagement');
-                } 
-                
-            } else {
-                $errorMsg = "Veuillez remplir tous les champs !";
-            }
-        }
-        include 'View/Articles/createArticleView.php';
-    }
 
     public function addArticle()
     {
@@ -156,9 +124,20 @@ class Articles extends Controller{
             \header('Location: index.php');
         } 
 
+    if (isset($_GET['page']) && $_GET['page'] > 0) {
+        $currentPage = intval(trim($_GET['page']));
+    } else {
+        $currentPage = 1;
+    }
 
-            $articlesManager = new ArticlesManager;
-            $articles = $articlesManager->listArticles();
+        $articlesManager = new ArticlesManager;
+        $resultArticle = $articlesManager->totalArticle();
+        $nbArticles = intval($resultArticle['totalArticle']);
+        $perPage = 5;
+        $pages = ceil($nbArticles / $perPage);
+        $firstPage = ($currentPage * $perPage) - $perPage;
+
+        $articles = $articlesManager->listArticles($firstPage, $perPage);
 
         include 'View/Articles/articleManagementView.php';
     }

@@ -9,8 +9,7 @@
           <input type="checkbox" id="btn">
           <ul>
                <li><a href="index.php">Home</a></li>
-               <li><a href="index.php?action=listContinent">Continent visité</a></li>
-               <li><a href="#">Contact</a></li>
+               <li><a href="index.php?action=listAllArticles">Tous les articles</a></li>
                <li>
                     <?php if ($this->isLogin) { ?>
                     <label for="btn-1" class="show">Users + </label>

@@ -16,8 +16,8 @@ header.header-admin {
      padding: 20px;
      width: 100%;
      height: 92px;
-
 }
+
 
 header.header-admin .left_area h3 {
      color: #fff;
@@ -26,6 +26,19 @@ header.header-admin .left_area h3 {
      font-size: 22px;
      font-weight: 900;
 }
+
+header.header-admin .left_area h3 a, 
+header.header-admin .home a {
+     color: #fff;
+}
+
+header.header-admin .left_area h3 a:hover,
+header.header-admin .home a:hover {
+     color: #fff;
+     font-weight: 800;
+     text-decoration: none;
+}
+
 
 header.header-admin .right_area a.logout-btn {
      padding: 15px;

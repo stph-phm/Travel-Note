@@ -12,13 +12,15 @@
      <link rel="stylesheet" href="Assets/CSS/footer.css">
      <link rel="stylesheet" href="Assets/CSS/errorBlock.css">
      <link rel="stylesheet" href="Assets/CSS/msgError.css">
+     <link rel="stylesheet" href="Assets/CSS/responsive.css">
 
-
+     <!-- bootsrap  -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
      <!-- fontawasome -->
      <script src="https://kit.fontawesome.com/effe484f35.js" crossorigin="anonymous"></script>
 
      <!-- google font -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
+     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
 
      <!-- bootsrap -->
      <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
@@ -33,7 +35,7 @@
 
           <main>
                <?= $content ?>
-               
+
           </main>
 
 

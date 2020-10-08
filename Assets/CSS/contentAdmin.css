@@ -223,4 +223,8 @@ td.t-user a.user-check:hover {
      background: #35bb29;
      font-weight: 600;
 }
-/*PAGE DISPLAY USER */
+/*-------------------------- PAGINATION-------------------------- */
+.pagination {
+     display: flex;
+     justify-content: center;
+}
