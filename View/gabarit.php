@@ -52,7 +52,9 @@
 
      <div class="sidebar">
           <center>
-               <div class="profile_img"></div>
+               <div class="profile_img">
+                    <img src="Assets\Images\6.jpg" alt="" srcset="">
+               </div>
                <h4>Stephanie</h4>
           </center>
           <a href="index.php?action=createArticle"><i class="fas fa-plus"></i>&nbsp; <span>Ajouter un article</span>
@@ -66,6 +68,13 @@
      </div>
 
      <div class="content-sidebar">
+          <?php $flashMessage = $this->displayFlash;
+          if (!empty($flashMessages)):
+               foreach ($flashMessages as $flash){ ?>
+               <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
+          
+          <?php } ?>
+          <?php endif;          ?>
           <?= $content ?>
      </div>
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Model\ArticlesManager;
 use App\Model\CommentsManager;
 use App\Model\UsersManager;
+use App\Session\FlashSession;
 
 class Articles extends Controller{
 
@@ -12,8 +13,9 @@ class Articles extends Controller{
         parent::__construct();
     }
 
-    public function homepage()
-    { if (isset($_GET['page']) && $_GET['page'] > 0) {
+    public function  homepage()
+    {
+        if (isset($_GET['page']) && $_GET['page'] > 0) {
             $currentPage = intval(trim($_GET['page']));
         } else {
             $currentPage = 1;
@@ -94,22 +96,16 @@ class Articles extends Controller{
             $country = $this->str_secur($_POST['country']);
             $regions = $this->str_secur($_POST['regions']);
             $city =$this->str_secur($_POST['city']);
-            $published = $_POST['published'];
 
-            if (!empty($article_title && !empty($content) && !empty($continent)&& !empty($country) && !empty($regions) && !empty($city) )) {
+            if (!empty($article_title) && !empty($content)  && !empty($continent)
+                && !empty($country)  && !empty($regions)  && !empty($city) ) {
 
-                if ($published == 1) {
-                    $published = 1;
-                    $articlesManager = new ArticlesManager();
-                    $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);
-                    header('Location: index.php?action=articleManagement');
-                } else {
-                    $published = 0;
-                    $articlesManager = new ArticlesManager();
-                    $articlesManager->addArticle($article_title, $content, $continent, $country, $regions, $city,$published);
-                    header('Location: index.php?action=articleManagement');
-                } 
-                
+               $articlesManager = new ArticlesManager();
+               $articlesManager->addArticle($article_title, $content,$continent, $country, $regions, $city);
+
+               $flashSession = new FlashSession();
+               $flashSession->addFlash('success',"Votre article est ajouté");
+               header('Location: index.php?action=articleManagement');
             } else {
                 $errorMsg = "Veuillez remplir tous les champs !";
             }
@@ -174,7 +170,11 @@ class Articles extends Controller{
 
                     if (!empty($article_title)  && !empty($content)) {
                         $articlesManager = new ArticlesManager;
-                        $articlesManager->editArticle($article_id, $article_title, $content, $continent, $country, $region, $city);
+                        $articlesManager->editArticle($article_id, $article_title, $content, $continent, $country,
+                        $region, $city);
+
+                        $flashSession = new FlashSession();
+                        $flashSession->addFlash('info', 'Votre article est bien modifier');
 
                         header('Location: index.php?action=articleManagement');
                     } else {
@@ -204,6 +204,9 @@ class Articles extends Controller{
                 throw new \Exception("Aucun identifiant de billet envoyé");
             } else {
                 $articlesManager->deleteArticle($article_id);
+                $flashSession = new FlashSession();
+                $flashSession->addFlash('warning', "L'article est bien supprimer");
+
                 header('Location: index.php?action=articleManagement');
             }
         } else {
@@ -227,6 +230,10 @@ class Articles extends Controller{
             } else {
                 $articlesManager->publishedArticle($article_id
                 );
+
+                $flashSession = new FlashSession();
+                $flashSession->addFlash('info', "Votre article est bien publié");
+
                 header('Location: index.php?action=articleManagement');
             }
 
@@ -251,6 +258,9 @@ class Articles extends Controller{
             } else {
                 $articlesManager->draftArticle($article_id
                 );
+                $flashSession = new FlashSession;
+                $flashSession->addFlash("info", "Votre article n'est pas publier il est brouillon");
+
                 header('Location: index.php?action=articleManagement');
             }
 
@@ -258,8 +268,5 @@ class Articles extends Controller{
             throw new \Exception("Aucun identifiant de billet envoyé");
         }
     }
-
-
-
 
 }

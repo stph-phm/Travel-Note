@@ -30,9 +30,6 @@
                     <label for="city">Ville</label>
                     <input type="text" name="city" id="city" value="<?= $article['city'] ?>">
                </div>
-
-
-
           </div>
 
           <div class="form-content ">

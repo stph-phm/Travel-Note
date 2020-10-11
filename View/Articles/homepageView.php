@@ -57,9 +57,7 @@
             <div class="about-me-img">
                 <img src="Assets\Images\6.jpg">
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ipsum ipsa reiciendis voluptates
-                dolorum debitis rem odio accusantium, error sit vero, facere, sequi dolore veritatis reprehenderit
-                architecto saepe quam. Voluptatum.</p>
+            <p>Etudiante en developpement web et voyageuse dans l'âme, jusqu'à ce jours j'ai pu visité plusieurs pays tel que Bali, L'USA, Rome etc.. je partage ici mes aventures </p>
         </div>
         <div class="category"></div>
     </div>

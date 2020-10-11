@@ -5,7 +5,7 @@
 <div class="part-addArticle">
      <div class="form">
           
-          <form action="" method="post">
+          <form action="" method="POST">
                <div class="title">
                     <label for="title"><span>Titre de l'article</span> <input type="text" name="title"
                               id="title"></label>
@@ -30,26 +30,36 @@
 
                     <div class="city">
                          <label for="city"><span>Ville</span> <input type="text" name="city" id="city"></label>
-
                     </div>
                </div>
                <div class="content">
                     <textarea name="content" id="default" cols="30" rows="15"></textarea>
                </div>
-               <div class="is-published-or-draft">
-                    
-                    <label for="published">Souhaitez-vous publier directement l'article ? <span><input type="checkbox" name="published" id="published" value="on"></span> 
-                    </label>
-                    <p>cochez la case si vous voulez publier l'article</p>
-               </div>
-
-               <button type="submit" class="submit">Ajouter un article </button>
+               <button type="submit" class="submit" name="submit">Ajouter un article </button>
           </form>
-          <?php if (isset($errorMsg)): ?>
-               <div class="alert"><?= $errorMsg?></div>
-          <?php endif; ?>
      </div>
+    <?php if(isset($errorMsg)) {?>
+        <div class="alert">
+            <?= $errorMsg; ?>
+        </div>
+        <?php } ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>
 <?php include 'View/gabarit.php'; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

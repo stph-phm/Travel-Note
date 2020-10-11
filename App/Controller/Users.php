@@ -4,7 +4,7 @@ namespace App\Controller;
 
 
 use App\Model\UsersManager;
-
+use App\Session\FlashSession;
 
 class Users extends Controller 
 {
@@ -15,19 +15,33 @@ class Users extends Controller
     public function __construct() {
         parent::__construct();
     }
-    
+
+    /**
+     * @throws \Exception
+     */
     public function listUsers()
     {
         if (!$this->isAdmin) {
             throw new \Exception('Aucun identifiant de billet envoyé');
         }
 
-        $usersManager = new UsersManager;
-        $listUsers = $usersManager->listUsers();
+        if (isset($_GET['page']) && $_GET['page'] > 0) {
+            $currentPage = intval(trim($_GET['page']));
+        } else {
+            $currentPage = 1;
+        }
 
+        $usersManager = new UsersManager;
+        $resultUsers = $usersManager->totalUsers();
+        $nbUsers = intval($resultUsers['totalUsers']);
+        $perPage = 5;
+        $pages = ceil($currentPage  /$perPage);
+        $firstPage = ($currentPage * $perPage) - $perPage;
+        $listUsers = $usersManager->listUsers($firstPage, $perPage);
 
         include 'View/User/listUserView.php';
     }
+
 
     public function signUp()
     {
@@ -95,6 +109,9 @@ class Users extends Controller
                     $hashSession = $this->hashSession($_SESSION['userId']);
                     $_SESSION['hashUserId'] = $hashSession;
 
+                    $flashSession = new FlashSession;
+                    $flashSession->addFlash('success', "Connexion réussi");
+
                     \header('Location: index.php');
                 } 
                 else {
@@ -115,6 +132,9 @@ class Users extends Controller
         \header("Location: index.php?action=signIn");
     }
 
+    /***
+     * @throws \Exception
+     */
     public function blockUser()
     {
         if (!$this->isAdmin) {
@@ -130,6 +150,8 @@ class Users extends Controller
                 throw new \Exception('Aucun identifiant de billet envoyé');
             } else {
                 $usersManager->blockUser($user_id);
+                $flashSession = new FlashSession;
+                $flashSession->addFlash('warning', "L'utilisateur est bloquer");
 
                 header('Location: index.php?action=managementUsers');
             }
@@ -138,6 +160,10 @@ class Users extends Controller
         }
     }
 
+
+    /**
+     * @throws \Exception
+     */
     public function unblockUser() {
         if (!$this->isAdmin) {
             \header('Location: index.php');
@@ -152,14 +178,20 @@ class Users extends Controller
                 throw new \Exception('Aucun identifiant de billet envoyé');
             } else {
                 $usersManager->unblockUser($user_id);
+                $flashSession = new FlashSession;
+                $flashSession->addFlash('success', "L'utilisateur est débloquer");
 
                 header('Location: index.php?action=managementUsers');
             }
         } else {
             throw new \Exception('Aucun identifiant de billet envoyé');
         }
-    }
+}
 
+
+    /**
+     * @throws \Exception
+     */
     public function displayUser()
     {
         if (!$this->isAdmin) {
@@ -189,5 +221,4 @@ class Users extends Controller
 
         include 'View/User/profilView.php';
     }
-
 }

@@ -12,6 +12,12 @@ class ArticlesManager extends Manager
     public $published_at;
 
 
+    /**
+     * @param $firstPage
+     * @param $perPage
+     * @return array
+     * ASC
+     */
     public function listArticlesPublished($firstPage, $perPage)
     {
 
@@ -28,6 +34,11 @@ class ArticlesManager extends Manager
         return $articles = $reqArticle->fetchAll();
     }
 
+    /**
+     * @param $firstPage
+     * @param $perPage
+     * @return array
+     */
     public function listArticles($firstPage, $perPage)
     {
         $db = $this->dbConnect();
@@ -41,6 +52,10 @@ class ArticlesManager extends Manager
         return $articles = $reqArticle->fetchAll();
     }
 
+    /**
+     * @param $article_id
+     * @return mixed
+     */
     public function getArticleById($article_id)
     {
         $db = $this->dbConnect();
@@ -58,11 +73,21 @@ class ArticlesManager extends Manager
     }
 
 
+    /**
+     * @param $article_id
+     * @param $title
+     * @param $content
+     * @param $continent
+     * @param $country
+     * @param $region
+     * @param $city
+     */
     public function editArticle($article_id, $title, $content, $continent, $country, $region, $city) {
         $db = $this->dbConnect();
         $reqArticle = $db->prepare('
             UPDATE articles 
-            SET title = :title, content = :content, continent = :continent, country = :country, region = :regions, city = :city, published_at =  NOW()
+            SET title = :title, content = :content, continent = :continent, country = :country, 
+            region = :regions, city = :city, published_at =  NOW()
             WHERE id = :id
         ');
 
@@ -77,6 +102,9 @@ class ArticlesManager extends Manager
         ]);
     }
 
+    /**
+     * @param $article_id
+     */
     public function publishedArticle($article_id) 
     {
         $db = $this->dbConnect();
@@ -90,6 +118,9 @@ class ArticlesManager extends Manager
         ]);
     }
 
+    /**
+     * @param $article_id
+     */
     public function draftArticle($article_id)
     {
         $db = $this->dbConnect();
@@ -103,6 +134,9 @@ class ArticlesManager extends Manager
         ]);
     }
 
+    /**
+     * @param $article_id
+     */
     public function deleteArticle($article_id)
     {
         $db = $this->dbConnect();
@@ -114,25 +148,35 @@ class ArticlesManager extends Manager
         ]);
     }
 
-    public function addArticle($title, $content, $continent,$country,$regions, $city, $is_published)
+    /**
+     * @param $title
+     * @param $content
+     * @param $continent
+     * @param $country
+     * @param $region
+     * @param $city
+     */
+    public function addArticle($title, $content, $continent,$country,$region, $city)
     {
         $db = $this->dbConnect();
-        $reqArticle = $db->prepare('
-            INSERT INTO articles(title, content, continent, country, regions, city, is_published, created_at, published_at)
-            VALUES(:title, :content, :continent, :country, :regions, :city, :is_published, NOW(), NOW() )
-        ');
+        $reqArticle = $db->prepare("
+            INSERT INTO articles(title, content, continent, country, region, city, created_at, published_at)
+            VALUES(:title,:content, :continent, :country, :region, :city, NOW(), NOW()) 
+        ");
 
         $reqArticle->execute([
-            'title'=> $title, 
-            'content'=> $content, 
-            'continent'=> $continent, 
-            'country'=> $country, 
-            'regions'=> $regions, 
-            'city'=>$city, 
-            'is_published'=> $is_published
+            'title'=> $title,
+            'content'=> $content,
+            'continent'=> $continent,
+            'country'=> $country,
+            'region'=> $region,
+            'city'=> $city
         ]);
     }
 
+    /***
+     * @return mixed
+     */
     public function totalArticle()
     {
         $db = $this->dbConnect();

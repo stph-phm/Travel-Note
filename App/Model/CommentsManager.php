@@ -5,6 +5,11 @@ namespace App\Model;
 
 class CommentsManager extends Manager
 {
+
+    /**
+     * @param $article_id
+     * @return array
+     */
     public function listComments($article_id)
     {
         $db = $this->dbConnect();
@@ -24,6 +29,10 @@ class CommentsManager extends Manager
         return $listComments = $reqComment->fetchAll();
     }
 
+    /**
+     * @param $comment_id
+     * @return mixed
+     */
     public function getCommentById ($comment_id)
     {
         $db = $this->dbConnect();
@@ -40,6 +49,13 @@ class CommentsManager extends Manager
         return $commentById = $reqComment->fetch();
     }
 
+
+    /**
+     * @param $comment
+     * @param $article_id
+     * @param $user_id
+     * @return string
+     */
     public function addComment($comment, $article_id, $user_id)
     {
         $db = $this->dbConnect();
@@ -59,12 +75,20 @@ class CommentsManager extends Manager
 
     }
 
+    /**
+     * @return string
+     */
     public function getLastId() 
     {
         $db = $this->dbConnect();
         return $db->lastInsertId("comments");
     }
 
+
+    /**
+     * @param $comment_id
+     * @param $comment
+     */
     public function editComment($comment_id, $comment )
     {
         $db = $this->dbConnect();
@@ -80,6 +104,11 @@ class CommentsManager extends Manager
         ]);
     }
 
+    /**
+     * @param $firstPage
+     * @param $perPage
+     * @return array
+     */
     public function listReportedCom($firstPage, $perPage)
     {
         $db = $this->dbConnect();
@@ -92,7 +121,6 @@ class CommentsManager extends Manager
             ON comments.article_id = articles.id 
             WHERE is_reported = 1 
             LIMIT $firstPage, $perPage
-            
         ");
 
         $reqComment->execute();
@@ -100,6 +128,10 @@ class CommentsManager extends Manager
         return $reportedComments = $reqComment->fetchAll();
     }
 
+
+    /**
+     * @param $comment_id
+     */
     public function reportComment($comment_id)
     {
 
@@ -114,6 +146,9 @@ class CommentsManager extends Manager
         ]);
     }
 
+    /**
+     * @param $comment_id
+     */
     public function validateComReported($comment_id)
     {
         $db = $this->dbConnect();
@@ -127,6 +162,9 @@ class CommentsManager extends Manager
         ]);
     }
 
+    /**
+     * @param $comment_id
+     */
     public function deleteComment($comment_id)
     {
         $db = $this->dbConnect();
@@ -139,6 +177,9 @@ class CommentsManager extends Manager
         ]);
     }
 
+    /**
+     * @return mixed
+     */
     public function totalComments()
     {
         $db = $this->dbConnect();

@@ -90,14 +90,17 @@ class UsersManager extends Manager
         return $userById = $reqUSer->fetch();
     }
 
-    public function listUsers() 
+    public function listUsers($firstPage, $perPage)
     {
         $db = $this->dbConnect();
-        $reqUser = $db->query('
+        $reqUser = $db->query("
             SELECT *
             FROM users 
-            ORDER BY user_at ASC');
-        return  $articles = $reqUser->fetchAll();
+            ORDER BY user_at ASC
+            LIMIT $firstPage , $perPage
+            ");
+        $reqUser->execute();
+        return  $listUser = $reqUser->fetchAll();
     }
 
     public function blockUser($user_id)
@@ -126,5 +129,16 @@ class UsersManager extends Manager
         $reqUser->execute([
             'id' => $user_id
         ]);
+    }
+
+    public function totalUsers()
+    {
+        $db = $this->dbConnect();
+        $reqUser = $db->prepare('
+            SELECT COUNT(*) AS totalUsers 
+            FROM users
+        ');
+        $reqUser->execute();
+        return $resultUsers = $reqUser->fetch();
     }
 }

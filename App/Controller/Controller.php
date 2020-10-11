@@ -3,16 +3,19 @@ namespace App\Controller;
 
 
 use App\Model\UsersManager;
+use App\Session\FlashSession;
 
 class Controller
 {
     public $userInfo;
     public $isLogin;
     public $isAdmin;
+    public $displauFlash;
 
     function __construct() {
         $this->isLogin = $this->isLogin();
         $this->isAdmin = $this->isAdmin();
+        $this->displayFlash = $this->displayFlash();
     }
 
     public function isLogin()
@@ -78,5 +81,13 @@ class Controller
     public function nl2br_secur($string)
     {
         return nl2br($string);
+    }
+
+    public function displayFlash() {
+        if (isset($_SESSION['flash'])) {
+            $flashSession = new FlashSession();
+            return $flashSession->getSession();
+        }
+        return [];
     }
 }

@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Model\ArticlesManager;
 use App\Model\CommentsManager;
+use App\Session\FlashSession;
 
 class Comments extends Controller
 {
@@ -120,6 +121,9 @@ class Comments extends Controller
             } else {
                 $commentsManager->validateComReported($comment_id);
 
+                $flashSession = new FlashSession;
+                $flashSession->addFlash('success', "Le commentaire est validé, il n'est plus signalé");
+
                 header('Location: index.php?action=dashboard');
             }
 
@@ -143,6 +147,8 @@ class Comments extends Controller
                 throw new \Exception("Aucun identifiant de billet envoyé");
             } else {
                 $commentsManager->deleteComment($comment_id);
+                $flashSession = new FlashSession;
+                $flashSession->addFlash('warning', "Le commentaire est supprimer");
 
                 header('Location: index.php?action=dashboard');
             }

@@ -2,14 +2,14 @@ regex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,
 
 
 
-initValidate() {
-     document.getElementById('email').innerHTML = ;
-     if (this.regex.test(document.getElementById(email).value)) {
-          document.getElementById('email').innerHTML = "L 'adresse mail est valide";
-          document.getElementById('email').style.color = green;
+initValidate(); {
+     var email = document.getElementById('email').innerHTML;
+     if (this.regex.test(email.value)) {
+          email = "L 'adresse mail est valide";
+          email.style.color = green;
      } else {
-          document.getElementById('email').innerHTML = " L 'adresse mail n\' est pas valide";
-          document.getElementById('email').style.color = red;
+          email = " L 'adresse mail n\' est pas valide";
+          email.style.color = red;
      }
      return false;
 }

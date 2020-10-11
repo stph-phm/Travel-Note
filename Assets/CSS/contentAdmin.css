@@ -27,6 +27,7 @@ td.t-report-comment a.times-comment:hover {
 
 .part-addArticle .form form .where {
      display: flex;
+     justify-content: space-around;
 }
 
 .part-addArticle .form form label  {
@@ -42,24 +43,15 @@ td.t-report-comment a.times-comment:hover {
      margin: 0;
 }
 
-.part-addArticle .form form .is-published-or-draft {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
 
-.part-addArticle .form form .is-published-or-draft label span {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
 
 .part-addArticle .form form button.submit {
      padding: 10px;
      background: #006669;
      color: white;
      border: none;
-     border-radius : 5px
+     border-radius : 5px;
+     margin-top:25px;
 }
 
 .part-addArticle .form form button.submit:hover {

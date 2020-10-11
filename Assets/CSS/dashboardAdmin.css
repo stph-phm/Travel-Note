@@ -70,10 +70,9 @@ header.header-admin .right_area a.logout-btn:hover {
      transition: left .5s;
 }
 
-.sidebar center .profile_img {
+.sidebar center .profile_img img {
      width: 100px;
      height: 100px;
-     background: purple;
      border-radius: 50%;
      margin-bottom: 10px;
 }
