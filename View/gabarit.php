@@ -68,14 +68,18 @@
      </div>
 
      <div class="content-sidebar">
-          <?php $flashMessage = $this->displayFlash;
-          if (!empty($flashMessages)):
-               foreach ($flashMessages as $flash){ ?>
-               <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
-          
-          <?php } ?>
-          <?php endif;          ?>
+         <?php
+         $flashMessages = $this->displayFlash;
+
+         if (!empty($flashMessages)) {
+             foreach ($flashMessages as $flash) { ?>
+                 <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
+             <?php }
+         }
+         ?>
           <?= $content ?>
+
+         <?php include 'View/Page/errorMsg.php'; ?>
      </div>
 
 

@@ -1,34 +1,15 @@
 /*-----------------------Message Error Block = like Error 404----------------------- */
 
-
-main,
-main .nav-section,
-main .alert{
-    width: 100%;
-    margin: 0;
-    padding: 0;
+.msgError {
+    min-height: 44.5vh;
 }
 
-main .nav-section {
-    height: 13vh;
-    background: black;
-}
-
-main .alert {
-    text-align: center;
-    height: 35vh;
-    display: flex;
-    align-items: center;
-    background: #f8d7da;
-}
-
-main .alert p {
+.msgError .alert.alert-danger {
+    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
-    font-weight: 700;
-    color: #8b3e46;
-    margin: 0 auto;
+    font-weight: 900;
+    font-size: 25px;
+    margin: 45px 0;
 }
-

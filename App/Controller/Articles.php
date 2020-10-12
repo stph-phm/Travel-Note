@@ -21,7 +21,7 @@ class Articles extends Controller{
             $currentPage = 1;
         }
 
-        $articlesManager = new ArticlesManager;
+        $articlesManager = new ArticlesManager();
         $resultArticle = $articlesManager->totalArticle();
         $nbArticles = intval($resultArticle['totalArticle']);
 
@@ -47,7 +47,7 @@ class Articles extends Controller{
                 $commentManager = new CommentsManager();
                 $listComments = $commentManager->listComments($article_id);
                 
-                $usersManager = new UsersManager;
+                $usersManager = new UsersManager();
                 $userById = $usersManager->getUserById($this->userInfo['id']);
                 
             }
@@ -100,12 +100,12 @@ class Articles extends Controller{
             if (!empty($article_title) && !empty($content)  && !empty($continent)
                 && !empty($country)  && !empty($regions)  && !empty($city) ) {
 
-               $articlesManager = new ArticlesManager();
-               $articlesManager->addArticle($article_title, $content,$continent, $country, $regions, $city);
+                $articlesManager = new ArticlesManager();
+                $articlesManager->addArticle($article_title, $content,$continent, $country, $regions, $city);
 
-               $flashSession = new FlashSession();
-               $flashSession->addFlash('success',"Votre article est ajouté");
-               header('Location: index.php?action=articleManagement');
+                $flashSession = new FlashSession();
+                $flashSession->addFlash('success',"Votre article est ajouté");
+                header('Location: index.php?action=articleManagement');
             } else {
                 $errorMsg = "Veuillez remplir tous les champs !";
             }
@@ -147,7 +147,7 @@ class Articles extends Controller{
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $article_id = $this->trim_secur($_GET['id']);
 
-            $articlesManager = new ArticlesManager;
+            $articlesManager = new ArticlesManager();
             $article = $articlesManager->getArticleById($article_id);
 
             if (!$article) {
@@ -170,8 +170,7 @@ class Articles extends Controller{
 
                     if (!empty($article_title)  && !empty($content)) {
                         $articlesManager = new ArticlesManager;
-                        $articlesManager->editArticle($article_id, $article_title, $content, $continent, $country,
-                        $region, $city);
+                        $articlesManager->editArticle($article_id, $article_title, $content, $continent, $country,$region, $city);
 
                         $flashSession = new FlashSession();
                         $flashSession->addFlash('info', 'Votre article est bien modifier');

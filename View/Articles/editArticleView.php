@@ -36,7 +36,7 @@
                <label for="content">Contenu du chapitre </label>
 
                <textarea name="content" id="default" class="form-control"
-                    rows="20"><?= $article['content'] ?> </textarea>
+                    rows="15"><?= $article['content'] ?> </textarea>
           </div>
           <button class="btn" type="submit" name="submit">Modifier</button>
      </form>

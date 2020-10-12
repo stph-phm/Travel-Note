@@ -87,16 +87,16 @@ class ArticlesManager extends Manager
         $reqArticle = $db->prepare('
             UPDATE articles 
             SET title = :title, content = :content, continent = :continent, country = :country, 
-            region = :regions, city = :city, published_at =  NOW()
+            region = :region, city = :city, published_at =  NOW()
             WHERE id = :id
         ');
 
         $reqArticle->execute([
-            "id"        =>$article_id, 
-            "title"     =>$title, 
-            "content"   =>$content, 
-            "continent" =>$continent, 
-            "country"   =>$country, 
+            "id"        =>$article_id,
+            "title"     =>$title,
+            "content"   =>$content,
+            "continent" =>$continent,
+            "country"   =>$country,
             "region"    =>$region,
             "city"      =>$city
         ]);

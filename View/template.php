@@ -34,14 +34,19 @@
           <?php include 'Includes/nav.php'; ?>
 
           <main>
-               <?php $flashMessage = $this->displayFlash;
-          if (!empty($flashMessages)):
-               foreach ($flashMessages as $flash){ ?>
-               <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
+              <?php
+              $flashMessages = $this->displayFlash;
 
-               <?php } ?>
-               <?php endif;          ?>
+              if (!empty($flashMessages)) {
+                  foreach ($flashMessages as $flash) { ?>
+                      <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
+                  <?php }
+              }
+              ?>
+
                <?= $content ?>
+
+              <?php include 'View/Page/errorMsg.php'; ?>
 
           </main>
 
