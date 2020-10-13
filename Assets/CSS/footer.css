@@ -42,7 +42,7 @@ footer .footer .footer-content .footer-section .socials a {
      width: 45px;
      height: 41px;
      padding-top: 5px;
-     text-align: cen#007d819a9a
+     text-align: center;
      font-size: 25px;
      border-radius: 5px;
      color: #d3d3d3;
@@ -85,33 +85,7 @@ footer .footer .footer-content .contact-form .contact-input {
      border-radius: 5px;
 }
 
-footer .footer .footer-content .contact-form .contact-input:focus {
-     background: #1a1a1a;
-}
 
-footer .footer .footer-content .footer-section form .form-btn {
-     text-align: end;
-     padding-right: 30px;
-     padding-top: 10px;
-}
-
-footer .footer .footer-content .contact-form .btn {
-     padding: 10px;
-     background: #006669;
-     color: white;
-     border: 1px solid transparent;
-     border-radius: 5px;
-     transition: all .6s;
-}
-
-footer .footer .footer-content .contact-form .btn:hover {
-     color: white;
-     background: #005255;
-}
-
-footer .footer .footer-content .contact-form .btn-big {
-     line-height: 1.3rem;
-}
 
 footer .footer .footer-content .contact-form button .btn .btn-big .contact-btn {
      float: left;
@@ -133,7 +107,7 @@ footer .footer .footer-bottom {
 @media(max-width: 786px) {
 
      footer .footer {
-          height: 925px;
+          height: 550px;
      }
 
 

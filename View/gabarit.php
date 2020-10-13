@@ -68,18 +68,18 @@
      </div>
 
      <div class="content-sidebar">
-         <?php
-         $flashMessages = $this->displayFlash;
+          <?php
+          $flashMessages = $this->displayFlash;
 
-         if (!empty($flashMessages)) {
-             foreach ($flashMessages as $flash) { ?>
-                 <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
-             <?php }
-         }
-         ?>
+          if (!empty($flashMessages)) {
+               foreach ($flashMessages as $flash) { ?>
+          <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
+          <?php }
+          }
+          ?>
           <?= $content ?>
 
-         <?php include 'View/Page/errorMsg.php'; ?>
+          <?php include 'View/Page/errorMsg.php'; ?>
      </div>
 
 
@@ -92,8 +92,8 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
      <!-- javascript -->
-     <script src="Assets/JS/app.js"></script>
-     <script src="Assets/JS/form.js"></script>
+     <script src="Assets/JS/ValidateEmail.js"></script>
+     <script src="Assets/JS/linkDelete.js"></script>
      <script src="Assets/JS/comment.js"></script>
      <script src="Assets/JS/menu.js"></script>
      <script src="Assets/JS/slider.js"></script>

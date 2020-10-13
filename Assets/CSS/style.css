@@ -173,6 +173,7 @@ main section {
 
 .article-content {
      padding: 10vh 10vh 3vh 10vh;
+     text-align: justify;
 }
 
 
@@ -237,6 +238,7 @@ main section {
      width: 50%;
      margin: 30px auto;
      border-radius: 10px;
+     text-align: center;
 }
 
 .msg-display-article h2 a {
@@ -320,9 +322,10 @@ main section {
      font-weight: 800;
 }
 /*------------------PAGE TOUS LES article------------------ */
-
-.list-articles {
-     margin: 30px;
+.part-all-articles h1 {
+     text-align: center;
+     text-transform: uppercase;
+     font-weight: 700;
 }
 
 .list {
@@ -534,6 +537,8 @@ main section {
 }
 
 @media (max-width : 400px) {
+
+
      .image .details p {
           font-size: 16px;
      }
@@ -542,4 +547,39 @@ main section {
      .more .icon-links a i {
           font-size: 18px;
      }
+}
+
+@media all and (max-width: 780px){
+
+     /* ---------------PAGE ARTICLE---------------  */
+     article .part-article .article-header .img {
+          height: 50vh;
+     }
+
+     .article-header .article-content {
+          padding:0 25px;
+
+     }
+/* --------------ARTICLE COMMENTS-------------- */
+article .msg-display-article {
+     height: 100%;
+}
+article .msg-display-article h2 {
+     font-size: 20px;
+     text-align: center;
+     padding: 5px;
+}
+
+     .item img {
+          height: 50vh;
+     }
+
+     main section {
+          display: block;
+     }
+
+     .section-category {
+          width: 100%;
+     }
+
 }

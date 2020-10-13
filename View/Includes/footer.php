@@ -30,24 +30,6 @@
                          </a>
                     </ul>
                </div>
-               <div class="footer-section contact-form">
-                    <h2>Contactez moi </h2>
-                    <form action="#" method="post">
-                         <div class="form-content">
-                              <input type="email" name="email" id="text-input" class=" contact-input"
-                                   placeholder="Votre adresse email...">
-
-                              <textarea name="message" class="text-input contact-input"
-                                   placeholder="Votre message..."></textarea>
-                         </div>
-                         <div class="form-btn">
-                              <button type="submit" class="btn btn-big contact-btn">
-                                   <i class="fas fa-paper-plane"></i>
-                                   Envoyer
-                              </button>
-                         </div>
-                    </form>
-               </div>
           </div>
 
           <div class="footer-bottom">

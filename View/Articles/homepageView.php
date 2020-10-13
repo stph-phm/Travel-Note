@@ -4,21 +4,17 @@
         <div class="slider-items">
             <div class="item">
                 <img src="Assets/Images/hero.jpg" alt="slide">
-                <div class="caption"> slide 1</div>
+                <div class="caption"> Retrouvez ici mes aventures</div>
             </div>
 
             <div class="item">
                 <img src="Assets/Images/image2.jpg" alt="slide">
-                <div class="caption">
-                    slide 2
-                </div>
+                <div class="caption"> <a href="index.php?action=listAllArticles">Tous les articles</a>                </div>
             </div>
 
             <div class="item">
                 <img src="Assets/Images/image3.jpg" alt="slide">
-                <div class="caption">
-                    slide 3
-                </div>
+                <div class="caption"> <a href="index.php?action=signIn">Connectez vous</a> </div>
             </div>
         </div>
 

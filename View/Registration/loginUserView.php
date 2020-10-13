@@ -9,10 +9,10 @@
         <a href="index.php?action=signUp"> Pas de compte ? Inscrivez vous</a>
 
         <div class="form-register">
-            <form action="" method="POST">
+            <form action="" method="POST" id="formCheck">
                 <div class="form">
                     <label for="email">Votre adresse e-mail : </label>
-                    <input type="email" class="form-control" name="email" id="email" value="<?= $email ?>"> <br>
+                    <input type="text" class="form-control" name="email" id="email" value="<?= $email ?>"> <br>
                     <label for="pswd">Votre mot de passe : </label>
                     <input type="password" class="form-control" name="pswd" id="pswd" value="<?= $pswd ?>"> <br>
                 </div>

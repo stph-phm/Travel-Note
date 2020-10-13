@@ -91,7 +91,7 @@ class Articles extends Controller{
 
         if (isset($_POST['submit'])) {
             $article_title = $this->str_secur($_POST['title']);
-            $content = $this->str_secur($_POST['content']);
+            $content = $this->nl2br_secur($_POST['content']);
             $continent = $this->str_secur($_POST['continent']);
             $country = $this->str_secur($_POST['country']);
             $regions = $this->str_secur($_POST['regions']);
