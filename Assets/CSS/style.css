@@ -200,12 +200,10 @@ main section {
 }
 
 .form-comment .form-group label {
-     padding: 5vh 11vh;
      font-weight: 600;
      text-transform: uppercase;
      font-size: 25px;
-     font-weight: 700;
-}
+     }
 
 .form-comment .form-group textarea#comment {
      height: 30vh;
