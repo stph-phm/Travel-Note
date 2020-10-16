@@ -199,9 +199,12 @@ main section {
 
 }
 
-.form-comment .form-group .form-group label {
+.form-comment .form-group label {
      padding: 5vh 11vh;
      font-weight: 600;
+     text-transform: uppercase;
+     font-size: 25px;
+     font-weight: 700;
 }
 
 .form-comment .form-group textarea#comment {
@@ -317,40 +320,45 @@ main section {
      color: #b41515;
      margin: 0 5px;
 }
+
 .report-comment a:hover {
      color: #8b3e46;
      font-weight: 800;
 }
-/*------------------PAGE TOUS LES article------------------ */
+
+/*------------------PAGE LIST ALL ARTICLES------------------ */
 .part-all-articles h1 {
      text-align: center;
      text-transform: uppercase;
      font-weight: 700;
 }
 
-.list {
+.part-all-articles .list-articles {
+     margin: 30px;
+}
+
+.part-all-articles .list-articles .list {
      width: 100%;
      display: flex;
      justify-content: center;
      flex-wrap: wrap;
 }
 
-.image {
+.part-all-articles .list-articles .list .image {
      background: #50A7FF;
      position: relative;
+
      max-width: 460px;
      height: 300px;
      margin: 20px;
      overflow: hidden;
 }
 
-.image img {
+.part-all-articles .list-articles .list .image img {
      opacity: 0.8;
      position: relative;
      vertical-align: top;
-     transition: .6s;
-     transition-property: opacity;
-
+     transition: .6s opacity;
 }
 
 .image:hover img {
@@ -367,48 +375,36 @@ main section {
      height: 100%;
 }
 
-.image .details h2 {
+.image .details h3 {
      text-align: center;
      font-size: 35px;
      text-transform: uppercase;
      font-weight: 300;
      margin-top: 70px;
-     transition: .4s transform;
+     transition: 0.4s transform;
 }
 
-.image .details h2 span {
+
+.image .details h3 span {
      font-weight: 900;
 }
 
-.image:hover .details h2 {
+.image:hover .details h3 {
      transform: translateY(-30px);
 }
 
-.image .details p {
-     margin: 30px 30px 0 30px;
-     font-size: 18px;
-     font-weight: 600;
-     text-align: center;
-     opacity: 0;
-     transition: .6s;
-     transition-property: opacity, transform;
-}
-
-.image:hover .details p {
-     opacity: 1;
-     transform: translateY(-40px);
-}
 
 .more {
      position: absolute;
-     background: rgba(255, 255, 255, .6);
+     background: rgba(255, 255, 255, 0.8);
      width: 100%;
      display: flex;
      justify-content: space-between;
      align-items: center;
      padding: 15px;
      bottom: -60px;
-     transition: .6s bottom;
+     transition: 0.6s;
+     transition-property: bottom;
 }
 
 .image:hover .more {
@@ -419,7 +415,7 @@ main section {
      color: #000;
      text-decoration: none;
      font-size: 20px;
-     font-weight: 700;
+     font-weight: 500;
      text-transform: uppercase;
 }
 
@@ -427,14 +423,7 @@ main section {
      font-weight: 900;
 }
 
-.more .icon-links i {
-     color: #000;
-     font-size: 20px;
-}
 
-.more .icon-links a:not(:last-child) i {
-     margin-right: 20px;
-}
 
 /* -----------------PART SIGN IN-----------------  */
 
@@ -549,7 +538,7 @@ main section {
      }
 }
 
-@media all and (max-width: 780px){
+@media all and (max-width: 780px) {
 
      /* ---------------PAGE ARTICLE---------------  */
      article .part-article .article-header .img {
@@ -557,18 +546,20 @@ main section {
      }
 
      .article-header .article-content {
-          padding:0 25px;
+          padding: 0 25px;
 
      }
-/* --------------ARTICLE COMMENTS-------------- */
-article .msg-display-article {
-     height: 100%;
-}
-article .msg-display-article h2 {
-     font-size: 20px;
-     text-align: center;
-     padding: 5px;
-}
+
+     /* --------------ARTICLE COMMENTS-------------- */
+     article .msg-display-article {
+          height: 100%;
+     }
+
+     article .msg-display-article h2 {
+          font-size: 20px;
+          text-align: center;
+          padding: 5px;
+     }
 
      .item img {
           height: 50vh;

@@ -38,11 +38,6 @@
                <button type="submit" class="submit" name="submit">Ajouter un article </button>
           </form>
      </div>
-    <?php if(isset($errorMsg)) {?>
-        <div class="alert">
-            <?= $errorMsg; ?>
-        </div>
-        <?php } ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>

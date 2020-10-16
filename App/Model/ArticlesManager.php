@@ -26,7 +26,7 @@ class ArticlesManager extends Manager
             SELECT * 
             FROM articles 
             WHERE is_published = 1 
-            ORDER BY created_at ASC 
+            ORDER BY created_at DESC 
             LIMIT $firstPage, $perPage
         ");
 
@@ -45,7 +45,7 @@ class ArticlesManager extends Manager
         $reqArticle = $db->prepare("
             SELECT *
             FROM articles 
-            ORDER BY created_at ASC 
+            ORDER BY created_at DESC 
             LIMIT $firstPage, $perPage
         ");
         $reqArticle->execute();

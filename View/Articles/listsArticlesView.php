@@ -4,28 +4,22 @@
      <div class="nav-header"></div>
      <h1>Tous les articles </h1>
 
-     <div class="list-articles">
-          <!--CONTAINER-->
+     <article class="list-articles"><!--CONTAINER-->
           <div class="list">
-               <?php foreach ($articles as $listArticles): ?>
+               <?php foreach ($articles as $listArticles){ ?>
                <div class="image">
                     <img src="Assets\Images\6.jpg" alt="">
                     <div class="details">
-                         <h2> <span><?= htmlspecialchars($listArticles['title']) ?></span></h2>
-                         <p><?=  nl2br(mb_substr($listArticles['content'], 0, 100)) ?></p>
+                         <h3> <span><?= htmlspecialchars($listArticles['title']) ?></span></h3>
+
                          <div class="more">
-                              <a href="index.php?action=article&amp;id=<?= $listArticles['id'] ?>"
-                                   class="read-more">Lire <span>la suite</span></a>
-                              <div class="icon-links">
-                                   <a href="index.php?action=article&amp;id=<?= $listArticles['id'] ?>"><i
-                                             class="fas fa-eye"></i></a>
-                              </div>
+                              <a href="index.php?action=article&amp;id=<?= $listArticles['id'] ?>" class="read-more">Lire <span>la suite</span></a>
                          </div>
                     </div>
                </div>
-               <?php endforeach; ?>
+               <?php } ?>
           </div>
-     </div>
+     </article>
      <div class="pagination">
           <nav>
                <ul class="pagination">

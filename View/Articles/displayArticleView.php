@@ -26,7 +26,6 @@
      <?php if ($this->isLogin) {
           if ($userById['is_blocked'] == 0) { ?>
      <div class="form-comment">
-
                <div class="form-group">
                     <label for="comment">Commentaire</label>
                     <textarea id="comment" class="form-control" rows="3" name="comment"></textarea>

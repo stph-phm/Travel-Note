@@ -1,5 +1,3 @@
-// class declaration
-
 class Slider {
      constructor(slider) {
           this.slider = slider;
@@ -26,10 +24,8 @@ class Slider {
           this.jumpWidth = 0;
           // call setWidth method
           this.setWidth()
-
-          // console.log(this.nextSlide);
      }
-     // set width of all slides items
+
      setWidth() {
           var totalWidth = 0;
           for (let i = 0; i < this.slides.length; i++) {

@@ -40,7 +40,7 @@
         </div>
 
         <div class="article-body">
-            <p><?=  nl2br(mb_substr($listArticle['content'], 0, 300)) ?> </p>
+            <p><?=  nl2br(mb_substr($listArticle['content'], 0, 450)) ?> </p>
             <button><a href="index.php?action=article&amp;id=<?= $listArticle['id'] ?>">Lire la suite...</a></button>
         </div>
         <?php endforeach; ?>

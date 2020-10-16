@@ -1,8 +1,6 @@
 <?php $title = "Modifier le chapitre :" ;  ?>
 <?php ob_start(); ?>
 
-
-
 <h1>Modifier un chapitre </h1>
 <div class="form">
      <form action="index.php?action=edit&amp;id= <?= $article['id'] ?>" method="post">
@@ -43,4 +41,4 @@
 </div>
 
 <?php $content = ob_get_clean(); ?>
-<?php include 'view/gabarit.php'; ?>
+<?php include 'View/gabarit.php'; ?>

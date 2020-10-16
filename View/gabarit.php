@@ -23,8 +23,7 @@
      <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
 
      <!-- TINIMCE -->
-     <script src="https://cdn.tiny.cloud/1/zxws6oho4y58ubsdfptbp4gb3420xahucxayj6amm3ptdqxt/tinymce/5/tinymce.min.js"
-          referrerpolicy="origin"></script>
+     <script src="https://cdn.tiny.cloud/1/vgtq5ete3x2m0xls3y7u19k7294z0zd891c1dfm4do7zll0b/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 
      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
