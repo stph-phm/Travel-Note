@@ -67,17 +67,10 @@
      </div>
 
      <div class="content-sidebar">
-          <?php
-          $flashMessages = $this->displayFlash;
+          <?php include 'View/Page/flashMsg.php'; ?>
 
-          if (!empty($flashMessages)) {
-               foreach ($flashMessages as $flash) { ?>
-          <div class="alert alert-<?=$flash['type'] ?> text-center"> <?= $flash['message'] ?> </div>
-          <?php }
-          }
-          ?>
           <?= $content ?>
-
+          
           <?php include 'View/Page/errorMsg.php'; ?>
      </div>
 

@@ -1,6 +1,6 @@
 class Main {
 
-     slider = new Slider();
+     slider = new Slider(this.slider);
 
 }
 

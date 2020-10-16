@@ -8,8 +8,7 @@ use App\Controller\Users;
 use App\Controller\Articles;
 use App\Controller\Comments;
 use App\Controller\Error;
-use App\Controller\Pages;
-use App\Model\ArticlesManager;
+
 
 $action = '';
 if (isset($_GET['action'])) {

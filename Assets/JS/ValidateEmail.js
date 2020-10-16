@@ -2,7 +2,7 @@ var regex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9
 
 
 
-function initValidate(event) {
+function validateEmail(event) {
 
      var email = document.getElementById('email');
      if (regex.test(email.value)) {
@@ -17,5 +17,5 @@ function initValidate(event) {
 
 var btn = document.getElementById('formCheck');
 if (btn != null) {
-     btn.addEventListener('submit', initValidate);
+     btn.addEventListener('submit', validateEmail);
 }

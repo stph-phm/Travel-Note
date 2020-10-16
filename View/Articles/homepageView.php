@@ -1,5 +1,6 @@
 <?php $title = "Homepage" ?>
 <?php ob_start(); ?>
+    <!---=========================================PART SLIDE=========================================-->
     <div class="slider-container slider1">
         <div class="slider-items">
             <div class="item">
@@ -9,7 +10,7 @@
 
             <div class="item">
                 <img src="Assets/Images/image2.jpg" alt="slide">
-                <div class="caption"> <a href="index.php?action=listAllArticles">Tous les articles</a>                </div>
+                <div class="caption"> <a href="index.php?action=listAllArticles">Tous les articles</a></div>
             </div>
 
             <div class="item">
@@ -25,7 +26,7 @@
         <!-- slide controls -->
     </div>
 
-
+<!--=========================================================LAST ARTICLE-=========================================================-->
 <section>
     <div class="section-article">
 
@@ -46,7 +47,7 @@
         <?php endforeach; ?>
     </div>
 
-
+    <!--=====================================================-PART ABOUT ME =====================================================-->
     <div class="section-category">
         <div class="about-me">
             <h2>A propos de moi</h2>
