@@ -43,7 +43,6 @@ class ArticlesManager extends Manager
             ORDER BY created_at DESC 
             LIMIT 0, 1
         ');
-
         return $lastArticle = $reqArticle->fetchAll();
     }
 

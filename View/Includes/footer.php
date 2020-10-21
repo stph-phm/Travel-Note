@@ -22,11 +22,8 @@
                          <a href="index.php">
                               <li>Home</li>
                          </a>
-                         <a href="#">
-                              <li>Continent Visité</li>
-                         </a>
-                         <a href="#">
-                              <li>Contact</li>
+                         <a href="index.php?action=listAllArticles">
+                              <li>Tous les articles </li>
                          </a>
                     </ul>
                </div>
