@@ -39,6 +39,7 @@ class ArticlesManager extends Manager
         $reqArticle = $db->query('
             SELECT * 
             FROM articles
+            WHERE is_published = 1 
             ORDER BY created_at DESC 
             LIMIT 0, 1
         ');
