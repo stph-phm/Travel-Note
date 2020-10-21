@@ -15,20 +15,8 @@ class Articles extends Controller{
 
     public function  homepage()
     {
-        if (isset($_GET['page']) && $_GET['page'] > 0) {
-            $currentPage = intval(trim($_GET['page']));
-        } else {
-            $currentPage = 1;
-        }
-
         $articlesManager = new ArticlesManager();
-        $resultArticle = $articlesManager->totalArticle();
-        $nbArticles = intval($resultArticle['totalArticle']);
-
-        $perPage = 1;
-        $pages = ceil($nbArticles / $perPage);
-        $fistPage = ($currentPage * $perPage) - $perPage;
-        $articles = $articlesManager->listArticlesPublished($fistPage, $perPage);
+        $lastArticle = $articlesManager->getLastArticle();
 
         include 'View/Articles/homepageView.php';
     }

@@ -30,7 +30,7 @@
 <section>
     <div class="section-article">
 
-        <?php foreach ($articles as $listArticle): ?>
+        <?php foreach ($lastArticle as $listArticle): ?>
         <div class="article-header">
             <h2><?= htmlspecialchars($listArticle['title'])?></h2>
             <p>

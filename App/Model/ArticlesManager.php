@@ -34,6 +34,18 @@ class ArticlesManager extends Manager
         return $articles = $reqArticle->fetchAll();
     }
 
+    public function getLastArticle() {
+        $db = $this->dbConnect();
+        $reqArticle = $db->query('
+            SELECT * 
+            FROM articles
+            ORDER BY created_at DESC 
+            LIMIT 0, 1
+        ');
+
+        return $lastArticle = $reqArticle->fetchAll();
+    }
+
     /**
      * @param $firstPage
      * @param $perPage
