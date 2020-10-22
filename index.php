@@ -105,6 +105,9 @@ try {
             $comments = new Comments;
             $comments->deleteComment();
             break;
+        case 'deleteCommentReport';
+            $comments = new Comments;
+            $comments->deleteReportCom();
 
         default:
             $articles = new Articles;

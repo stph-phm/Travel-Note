@@ -97,6 +97,8 @@ class Comments extends Controller
             }
             else {
                 $commenstManager->deleteComment($comment_id);
+                $flashSession = new FlashSession();
+                $flashSession->addFlash('info', 'Commentaire est supprimé !');
                 \header('Location: index.php?action=article&id='.$commentById['article_id']);
             }
         }
