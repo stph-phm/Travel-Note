@@ -36,13 +36,16 @@ class ArticlesManager extends Manager
 
     public function getLastArticle() {
         $db = $this->dbConnect();
-        $reqArticle = $db->query('
+        $reqArticle = $db->prepare('
             SELECT * 
             FROM articles
             WHERE is_published = 1 
             ORDER BY created_at DESC 
             LIMIT 0, 1
         ');
+
+        $reqArticle->execute();
+
         return $lastArticle = $reqArticle->fetchAll();
     }
 
