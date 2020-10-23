@@ -39,7 +39,7 @@ class Users extends Controller
         $firstPage = ($currentPage * $perPage) - $perPage;
         $listUsers = $usersManager->listUsers($firstPage, $perPage);
 
-        include 'View/User/listUserView.php';
+        include 'View/User/managementUsers.php';
     }
 
 
@@ -134,11 +134,12 @@ class Users extends Controller
 
     /***
      * @throws \Exception
-     */
+     **/
+
     public function blockUser()
     {
-        if (!$this->isAdmin) {
-            \header('Location: index.php');
+        if(!$this->isAdmin) {
+            header('Location: index.php');
         }
 
         if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -146,17 +147,41 @@ class Users extends Controller
             $usersManager = new UsersManager;
             $userById = $usersManager->getUserById($user_id);
 
-            if(!$userById) {
+            if (!$userById) {
                 throw new \Exception('Aucun identifiant de billet envoyé');
             } else {
                 $usersManager->blockUser($user_id);
                 $flashSession = new FlashSession;
-                $flashSession->addFlash('warning', "L'utilisateur est bloquer");
+                $flashSession->addFlash('warning', "L'utilisateur est bloqué, il ne peut plus commenter");
 
                 header('Location: index.php?action=managementUsers');
             }
         } else {
-            throw new \Exception('Aucun identifiant de billet envoyé');
+            throw new \Exception("Aucun identifiant de billet envoyé");
+            
+        }
+    }
+
+    public function unblockUser()
+    {
+        if (!$this->isAdmin) {
+            header('Location: index.php');
+        }
+
+        if (isset($_GET['id']) && $_GET['id'] > 0 ) {
+            $user_id = $this->trim_secur($_GET['id']);
+            $usersManager = new UsersManager;
+            $userById = $usersManager->getUserById($user_id);
+
+            if (!$userById) {
+                throw new \Exception('Aucun identifiant de billet envoyé');
+            } else {
+                $usersManager->unblockUser($user_id);
+                $flashSession = new FlashSession;
+                $flashSession->addFlash('success', "L'utilisateur est débloquer");
+
+                header('Location: index.php?action=managementUsers');
+            }
         }
     }
 
@@ -164,7 +189,7 @@ class Users extends Controller
     /**
      * @throws \Exception
      */
-    public function unblockUser() {
+    public function unblockUaser() {
         if (!$this->isAdmin) {
             \header('Location: index.php');
         }

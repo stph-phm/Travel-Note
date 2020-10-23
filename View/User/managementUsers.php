@@ -61,7 +61,5 @@
         </nav>
     </div>
 </div>
-
-
 <?php $content = ob_get_clean(); ?>
 <?php include 'View/gabarit.php'; ?>

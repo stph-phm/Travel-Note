@@ -8,7 +8,7 @@
           <div class="list">
                <?php foreach ($articles as $listArticles){ ?>
                <div class="image">
-                    <img src="Assets\Images\6.jpg" alt="">
+                    <img src="Assets/Images/6.jpg" alt="image card article">
                     <div class="details">
                          <h3> <span><?= htmlspecialchars($listArticles['title']) ?></span></h3>
 

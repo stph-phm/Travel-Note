@@ -41,8 +41,10 @@
         </div>
 
         <div class="article-body">
-            <p><?=  nl2br(mb_substr($listArticle['content'], 0, 450)) ?> </p>
-            <button><a href="index.php?action=article&amp;id=<?= $listArticle['id'] ?>">Lire la suite...</a></button>
+            <?=  nl2br(mb_substr($listArticle['content'], 0, 450)) ?> 
+
+                <a href="index.php?action=article&amp;id=<?= $listArticle['id'] ?>">Lire la suite...</a>
+
         </div>
         <?php endforeach; ?>
     </div>
@@ -52,7 +54,7 @@
         <div class="about-me">
             <h2>A propos de moi</h2>
             <div class="about-me-img">
-                <img src="Assets\Images\6.jpg">
+                <img src="Assets/Images/6.jpg" alt="photo de l'auteur">
             </div>
             <p>Etudiante en developpement web et voyageuse dans l'âme, jusqu'à ce jours j'ai pu visité plusieurs pays tel que Bali, L'USA, Rome etc.. je partage ici mes aventures </p>
         </div>

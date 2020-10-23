@@ -143,8 +143,6 @@ main section {
      text-align: justify;
 }
 
-/* ===============================ARTICLE HOMEPAGE=============================== */
-
 
 /* ----------------------------PAGE ARTICLE--------------------------  */
 
@@ -176,6 +174,10 @@ main section {
      text-align: justify;
 }
 
+p.blocked.alert.alert-warning.text-center {
+     font-size: 22px;
+     font-weight: 600;
+}
 
 /* --------------------------PART COMMENTS-------------------------- */
 /*--------------------------FORM COMMENTS-----------------------*/

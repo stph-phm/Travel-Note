@@ -8,21 +8,21 @@
                          <h2>
                               <?= htmlspecialchars($article['title']) ?>
                          </h2>
-                         <p class="article-subTitle">
+                         <div class="article-subTitle">
                               <span><i class="fas fa-calendar-alt"> &nbsp; </i>
                                    <?= date_format(date_create($article['published_at']), 'd/m/Y') ?> |
                                    &nbsp;</span>
                               <span><?= htmlspecialchars($article['city']) ?> - <?= htmlspecialchars($article['country']) ?>  </span>
-                         </p>
+                         </div>
                     </div>
                </div>
 
                <div class="article-content">
-                    <p> <?= nl2br($article['content']) ?> </p>
+                  <?= nl2br($article['content']) ?>
                </div>
           </div>
      </div>
-          <!-- -----------------------COMMENTS----------------------- -->
+          <!-- COMMENT-->
      <?php if ($this->isLogin) {
           if ($userById['is_blocked'] == 0) { ?>
      <div class="form-comment">
@@ -34,7 +34,7 @@
 
      </div>
      <?php } else { ?>
-     <p>Votre compte est bloquer par l'administrateur (trop de vos commentaires sont signaler) </p>
+     <p class="blocked alert alert-warning text-center">Votre compte est bloquer par l'administrateur (trop de vos commentaires sont signaler) </p>
      
      <?php } ?>
 

@@ -56,7 +56,7 @@ footer .footer .footer-content .footer-section .socials a:hover {
      transition: all .3s;
 }
 
-footer .footer .footer-content .links ul a {
+footer .footer .footer-content .links a {
 
      text-align: center;
      margin-left: 0;
@@ -68,7 +68,7 @@ footer .footer .footer-content .links ul a {
      color: #d3d3d3;
 }
 
-footer .footer .footer-content .links ul a:hover {
+footer .footer .footer-content .links  a:hover {
      background: #005255;
      color: white;
      transition: all .3s;

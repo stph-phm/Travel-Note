@@ -19,12 +19,8 @@
                <div class="footer-section links">
                     <h2>Quick Links</h2>
                     <ul>
-                         <a href="index.php">
-                              <li>Home</li>
-                         </a>
-                         <a href="index.php?action=listAllArticles">
-                              <li>Tous les articles </li>
-                         </a>
+                         <li><a href="index.php?action=homepage"> Home </a></li>
+                         <li><a href="index.php?action=listAllArticles"> Tous les articles </a></li>
                     </ul>
                </div>
           </div>
