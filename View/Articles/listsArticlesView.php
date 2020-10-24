@@ -6,7 +6,7 @@
 
      <article class="list-articles"><!--CONTAINER-->
           <div class="list">
-               <?php foreach ($articles as $listArticles){ ?>
+               <?php foreach ($articles as $listArticles): ?>
                <div class="image">
                     <img src="Assets/Images/6.jpg" alt="image card article">
                     <div class="details">
@@ -17,7 +17,7 @@
                          </div>
                     </div>
                </div>
-               <?php } ?>
+               <?php endforeach; ?>
           </div>
      </article>
      <div class="pagination">

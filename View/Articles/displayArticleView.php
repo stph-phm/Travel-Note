@@ -18,13 +18,13 @@
                </div>
 
                <div class="article-content">
-                  <?= nl2br($article['content']) ?>
+                    <?= nl2br($article['content']) ?>
                </div>
           </div>
      </div>
           <!-- COMMENT-->
-     <?php if ($this->isLogin) {
-          if ($userById['is_blocked'] == 0) { ?>
+     <?php if ($this->isLogin) : ?>
+               <?php if ($userById['is_blocked'] == 0): ?>
      <div class="form-comment">
                <div class="form-group">
                     <label for="comment">Commentaire</label>
@@ -33,16 +33,16 @@
                <button id="sendComment" class="btn btn-primary mb-4" data-id="<?= $article['id']?>" > Commentez </button>
 
      </div>
-     <?php } else { ?>
+     <?php else : ?>
      <p class="blocked alert alert-warning text-center">Votre compte est bloquer par l'administrateur (trop de vos commentaires sont signaler) </p>
      
-     <?php } ?>
+     <?php endif; ?>
 
-     <?php } else { ?>
+     <?php  else: ?>
      <div class="msg-display-article">
           <h2> <a href="index.php?action=signIn">Pour commenter veuillez vous connectez</a></h2>
      </div>
-     <?php } ?>
+     <?php endif; ?>
 
 
      <div class="part-comments">
